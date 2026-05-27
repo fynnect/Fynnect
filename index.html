@@ -220,6 +220,14 @@ body {
   overflow: hidden;
   background: var(--ink);
 }
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    justify-content: center;
+    padding-top: 120px;
+    padding-bottom: 64px;
+  }
+}
 
 /* Gradient mesh bg */
 .hero__bg {
@@ -337,6 +345,9 @@ body {
   width: 1px; height: 48px;
   background: linear-gradient(to bottom, rgba(176,154,114,0.6), transparent);
   animation: scrollLine 2s ease-in-out infinite;
+}
+@media (max-width: 768px) {
+  .hero__scroll { display: none !important; }
 }
 @keyframes scrollLine {
   0%   { transform: scaleY(0); transform-origin: top; }
@@ -527,21 +538,25 @@ body {
   gap: 0;
   position: relative;
 }
-.process__steps::before {
-  content: '';
-  position: absolute;
-  top: 36px; left: 5%;
-  width: 90%;
-  height: 1px;
-  background: linear-gradient(to right, transparent, rgba(176,154,114,0.3), rgba(176,154,114,0.3), transparent);
-  pointer-events: none;
-}
+.process__steps::before { display: none; }
 
+/* Connector lines between circles — drawn from right edge of each circle to left edge of next */
 .process-step {
   padding: 0 32px 0 0;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  position: relative;
+}
+.process-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 36px;
+  left: 72px;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, rgba(176,154,114,0.4), rgba(176,154,114,0.15));
+  pointer-events: none;
 }
 .process-step__num {
   width: 72px; height: 72px;
@@ -988,8 +1003,6 @@ body {
   .nav__links, .nav .btn { display: none; }
   .nav__hamburger { display: flex; }
 
-  .hero { padding-bottom: 72px; }
-
   .about { padding: 100px 0; }
   .services { padding: 90px 0; }
   .process { padding: 90px 0; }
@@ -1020,7 +1033,6 @@ body {
 
 @media (max-width: 480px) {
   .container, .container--narrow { padding: 0 18px; }
-  .hero { padding-bottom: 56px; }
   .hero__headline { font-size: clamp(2.6rem, 11vw, 3.5rem); }
   .hero__ctas { flex-direction: column; align-items: flex-start; gap: 12px; }
   .hero__ctas .btn { width: 100%; justify-content: center; }
