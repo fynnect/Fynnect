@@ -28,6 +28,11 @@
   --font-sans:  'Jost', system-ui, sans-serif;
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out:   cubic-bezier(0.0, 0.0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast:   0.18s;
+  --dur-base:   0.35s;
+  --dur-slow:   0.55s;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -80,7 +85,7 @@ body {
   top: 0; left: 0; right: 0;
   z-index: 100;
   padding: 22px 0;
-  transition: background 0.5s var(--ease), border-color 0.5s, padding 0.4s var(--ease);
+  transition: background var(--dur-slow) var(--ease), border-color var(--dur-slow) var(--ease), padding var(--dur-base) var(--ease);
   border-bottom: 1px solid transparent;
 }
 .nav.scrolled {
@@ -102,7 +107,7 @@ body {
   letter-spacing: 0.06em;
   color: var(--gold);
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color var(--dur-base) var(--ease);
 }
 .nav__logo span { color: var(--gold); }
 
@@ -119,7 +124,7 @@ body {
   color: var(--gold);
   text-decoration: none;
   position: relative;
-  transition: color 0.3s;
+  transition: color var(--dur-base) var(--ease);
 }
 .nav__links a::after {
   content: '';
@@ -127,7 +132,7 @@ body {
   bottom: -3px; left: 0;
   width: 0; height: 1px;
   background: var(--gold-light);
-  transition: width 0.35s var(--ease);
+  transition: width var(--dur-base) var(--ease-out);
 }
 .nav__links a:hover { color: var(--gold-light); }
 .nav__links a:hover::after { width: 100%; }
@@ -147,7 +152,12 @@ body {
   cursor: pointer;
   border: none;
   outline: none;
-  transition: all 0.35s var(--ease);
+  transition:
+    background var(--dur-base) var(--ease),
+    color var(--dur-base) var(--ease),
+    transform var(--dur-base) var(--ease-spring),
+    box-shadow var(--dur-base) var(--ease),
+    border-color var(--dur-base) var(--ease);
 }
 .btn--dark {
   background: var(--ink);
@@ -155,8 +165,8 @@ body {
 }
 .btn--dark:hover {
   background: var(--ink-soft);
-  transform: translateY(-1px);
-  box-shadow: 0 8px 30px rgba(12,11,9,0.18);
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 10px 32px rgba(12,11,9,0.2);
 }
 .btn--outline {
   background: transparent;
@@ -165,7 +175,8 @@ body {
 }
 .btn--outline:hover {
   border-color: var(--ink);
-  transform: translateY(-1px);
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 6px 20px rgba(12,11,9,0.07);
 }
 .btn--gold {
   background: var(--gold);
@@ -173,7 +184,7 @@ body {
 }
 .btn--gold:hover {
   background: var(--gold-light);
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.01);
   box-shadow: 0 12px 40px rgba(176,154,114,0.35);
 }
 .btn--ghost-inv {
@@ -184,6 +195,7 @@ body {
 .btn--ghost-inv:hover {
   background: rgba(246,243,238,0.08);
   border-color: rgba(246,243,238,0.6);
+  transform: translateY(-2px) scale(1.01);
 }
 
 .nav.scrolled .nav__links a { color: #8B7550; }
@@ -204,7 +216,7 @@ body {
 .nav__hamburger span {
   display: block; width: 24px; height: 1.5px;
   background: var(--gold); margin: 0;
-  transition: all 0.35s var(--ease);
+  transition: transform var(--dur-base) var(--ease), opacity var(--dur-base) var(--ease), background var(--dur-base) var(--ease);
 }
 
 /* ─────────────────────────────────────────
@@ -412,6 +424,103 @@ body {
 
 
 /* ─────────────────────────────────────────
+   FOUNDERS
+───────────────────────────────────────── */
+.founders {
+  padding: 100px 0;
+  background: var(--cream);
+}
+.founders__heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 48px;
+}
+.founders__heading em { font-style: italic; color: var(--gold); }
+.founders__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.founder-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  border: 1px solid rgba(0,0,0,0.06);
+  transition:
+    transform var(--dur-base) var(--ease-spring),
+    box-shadow var(--dur-base) var(--ease);
+}
+.founder-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 16px 48px rgba(12,11,9,0.08);
+}
+.founder-card__avatar {
+  width: 80px; height: 80px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--gold);
+  background: linear-gradient(160deg, #1A1814 0%, #0F0E0B 100%);
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+}
+.founder-card__body-wrap { flex: 1; }
+.founder-card__name {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.founder-card__role {
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.founder-card__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.founder-card__badge {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  background: var(--warm);
+  border: 1px solid rgba(0,0,0,0.07);
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+.founder-card__quote {
+  font-family: var(--font-serif);
+  font-size: 0.88rem;
+  font-style: italic;
+  color: rgba(12,11,9,0.45);
+  line-height: 1.6;
+  border-left: 1.5px solid rgba(176,154,114,0.4);
+  padding-left: 12px;
+  margin-top: 4px;
+}
+@media (max-width: 768px) {
+  .founders { padding: 80px 0; }
+  .founders__grid { grid-template-columns: 1fr; }
+  .founder-card { padding: 24px; }
+}
+
+/* ─────────────────────────────────────────
    SERVICES
 ───────────────────────────────────────── */
 .services {
@@ -457,7 +566,10 @@ body {
   position: relative;
   overflow: hidden;
   cursor: default;
-  transition: background 0.4s var(--ease), transform 0.4s var(--ease);
+  transition:
+    background var(--dur-base) var(--ease),
+    transform var(--dur-base) var(--ease-spring),
+    box-shadow var(--dur-base) var(--ease);
 }
 .service-card:first-child  { border-radius: 20px 0 0 0; }
 .service-card:nth-child(4) { border-radius: 0 20px 0 0; }
@@ -471,9 +583,9 @@ body {
   background: var(--gold);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.4s var(--ease);
+  transition: transform var(--dur-slow) var(--ease-out);
 }
-.service-card:hover { background: var(--ink); transform: translateY(-2px); }
+.service-card:hover { background: var(--ink); transform: translateY(-3px); box-shadow: 0 16px 48px rgba(12,11,9,0.12); }
 .service-card:hover .service-card__icon { color: var(--gold); }
 .service-card:hover .service-card__title { color: var(--cream); }
 .service-card:hover .service-card__desc { color: rgba(246,243,238,0.5); }
@@ -482,7 +594,7 @@ body {
 .service-card__icon {
   font-size: 1.6rem;
   color: var(--sage);
-  transition: color 0.4s;
+  transition: color var(--dur-base) var(--ease);
   line-height: 1;
 }
 .service-card__title {
@@ -491,14 +603,14 @@ body {
   font-weight: 400;
   color: var(--ink);
   letter-spacing: 0.01em;
-  transition: color 0.4s;
+  transition: color var(--dur-base) var(--ease);
   line-height: 1.3;
 }
 .service-card__desc {
   font-size: 0.82rem;
   color: var(--ink-soft);
   line-height: 1.75;
-  transition: color 0.4s;
+  transition: color var(--dur-base) var(--ease);
   flex: 1;
 }
 .service-card__arrow {
@@ -509,7 +621,7 @@ body {
   margin-top: 8px;
   opacity: 0;
   transform: translateX(-8px);
-  transition: opacity 0.3s, transform 0.3s var(--ease);
+  transition: opacity var(--dur-base) var(--ease), transform var(--dur-base) var(--ease-out);
 }
 .service-card:hover .service-card__arrow { opacity: 1; transform: translateX(0); }
 
@@ -572,7 +684,11 @@ body {
   color: var(--gold);
   position: relative;
   z-index: 1;
-  transition: all 0.4s var(--ease);
+  transition:
+    background var(--dur-base) var(--ease),
+    color var(--dur-base) var(--ease),
+    border-color var(--dur-base) var(--ease),
+    transform var(--dur-base) var(--ease-spring);
 }
 .process-step:hover .process-step__num {
   background: var(--gold);
@@ -691,12 +807,14 @@ body {
   border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease);
+  transition:
+    transform var(--dur-base) var(--ease-spring),
+    box-shadow var(--dur-base) var(--ease);
   display: flex;
   flex-direction: column;
 }
 .insight-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-6px) scale(1.01);
   box-shadow: 0 24px 60px rgba(12,11,9,0.1);
 }
 .insight-card__thumb {
@@ -707,7 +825,7 @@ body {
 .insight-card--featured .insight-card__thumb { aspect-ratio: 4/3; }
 .insight-card__thumb-bg {
   width: 100%; height: 100%;
-  transition: transform 0.6s var(--ease);
+  transition: transform var(--dur-slow) var(--ease-out);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -833,7 +951,7 @@ body {
 .cta-section__contact-item a {
   color: rgba(246,243,238,0.7);
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color var(--dur-base) var(--ease);
 }
 .cta-section__contact-item a:hover { color: var(--gold); }
 .contact-dot {
@@ -888,12 +1006,17 @@ body {
   color: rgba(246,243,238,0.4);
   font-size: 0.75rem;
   text-decoration: none;
-  transition: all 0.3s;
+  transition:
+    border-color var(--dur-base) var(--ease),
+    color var(--dur-base) var(--ease),
+    background var(--dur-base) var(--ease),
+    transform var(--dur-base) var(--ease-spring);
 }
 .footer__social:hover {
   border-color: var(--gold);
   color: var(--gold);
   background: rgba(176,154,114,0.08);
+  transform: translateY(-2px) scale(1.08);
 }
 .footer__col-title {
   font-size: 0.68rem;
@@ -907,10 +1030,10 @@ body {
   font-size: 0.85rem;
   color: rgba(246,243,238,0.45);
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color var(--dur-base) var(--ease), transform var(--dur-base) var(--ease-out);
   display: inline-block;
 }
-.footer__col-links a:hover { color: var(--cream); }
+.footer__col-links a:hover { color: var(--cream); transform: translateX(4px); }
 
 .footer__bottom {
   display: flex;
@@ -956,7 +1079,7 @@ body {
   color: var(--cream);
   text-decoration: none;
   opacity: 0.7;
-  transition: opacity 0.3s, color 0.3s;
+  transition: opacity var(--dur-base) var(--ease), color var(--dur-base) var(--ease);
 }
 .nav__mobile-menu a:hover { opacity: 1; color: var(--gold-light); }
 .nav__mobile-menu-close {
@@ -968,7 +1091,7 @@ body {
   font-size: 1.5rem;
   cursor: pointer;
   background: none; border: none;
-  transition: color 0.3s;
+  transition: color var(--dur-base) var(--ease);
 }
 .nav__mobile-menu-close:hover { color: var(--gold); }
 
@@ -1064,7 +1187,7 @@ body {
         <li><a href="#process">Process</a></li>
         <li><a href="#insights">Insights</a></li>
       </ul>
-      <a href="#consult" class="btn btn--dark">Book a Call</a>
+      <a href="https://www.wealthy.in/partners/fynnect" target="_blank" rel="noopener" class="btn btn--dark">Book a Call</a>
       <div class="nav__hamburger" id="hamburger" role="button" aria-label="Open menu" aria-expanded="false" tabindex="0">
         <span></span><span></span><span></span>
       </div>
@@ -1079,7 +1202,7 @@ body {
   <a href="#services" onclick="closeMenu()">Services</a>
   <a href="#process"  onclick="closeMenu()">Process</a>
   <a href="#insights" onclick="closeMenu()">Insights</a>
-  <a href="#consult"  onclick="closeMenu()">Book a Consultation →</a>
+  <a href="https://www.wealthy.in/partners/fynnect" target="_blank" rel="noopener"  onclick="closeMenu()">Book a Consultation →</a>
 </div>
 
 <!-- ═══════════════ HERO ═══════════════ -->
@@ -1097,7 +1220,7 @@ body {
       FYNNECT helps you structure your finances around what actually matters — your goals, your milestones, your peace of mind. Not products. Not markets.
     </p>
     <div class="hero__ctas">
-      <a href="#consult" class="btn btn--gold">Book a Consultation</a>
+      <a href="https://www.wealthy.in/partners/fynnect" target="_blank" rel="noopener" class="btn btn--gold">Book a Consultation</a>
       <a href="#services" class="btn btn--ghost-inv">Explore Services</a>
     </div>
   </div>
@@ -1131,7 +1254,53 @@ body {
           So we built FYNNECT with a different approach — one centred around clarity, trust, and genuine advice. No pushing products. No unnecessary complexity. Just helping people make smarter financial decisions based on their goals, priorities, and the kind of future they truly want to build.
         </p>
         <div class="reveal reveal-delay-4" style="margin-top:8px;">
-          <a href="#consult" class="btn btn--outline">Start a Conversation</a>
+          <a href="https://www.wealthy.in/partners/fynnect" target="_blank" rel="noopener" class="btn btn--outline">Start a Conversation</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOUNDERS ═══════════════ -->
+<section class="founders" id="founders">
+  <div class="container">
+
+    <div class="reveal">
+      <p class="section-label">The People Behind FYNNECT</p>
+      <h2 class="founders__heading">Two minds.<br/><em>One philosophy.</em></h2>
+    </div>
+
+    <div class="founders__grid">
+
+      <div class="founder-card reveal">
+        <div class="founder-card__avatar">BTS</div>
+        <div class="founder-card__body-wrap">
+          <div class="founder-card__info">
+            <p class="founder-card__name">Balaji T.S.</p>
+            <p class="founder-card__role">Co-Founder</p>
+            <div class="founder-card__badges">
+              <span class="founder-card__badge">Chartered Accountant</span>
+              <span class="founder-card__badge">ICAI Member</span>
+            </div>
+            <p class="founder-card__quote">"Great planning starts before the first rupee is invested."</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="founder-card reveal reveal-delay-1">
+        <div class="founder-card__avatar">DTV</div>
+        <div class="founder-card__body-wrap">
+          <div class="founder-card__info">
+            <p class="founder-card__name">Deepak T.V.</p>
+            <p class="founder-card__role">Co-Founder</p>
+            <div class="founder-card__badges">
+              <span class="founder-card__badge">NISM Research Analyst</span>
+              <span class="founder-card__badge">MSc International Finance</span>
+              <span class="founder-card__badge">Northumbria University, UK</span>
+            </div>
+            <p class="founder-card__quote">"The best portfolio is the one you can hold through a storm."</p>
+          </div>
         </div>
       </div>
 
@@ -1355,8 +1524,7 @@ body {
       One conversation is all it takes to get started. No sales pitch. No jargon. Just an honest discussion about your financial life and where you want to go.
     </p>
     <div class="cta-section__btns reveal reveal-delay-3">
-      <a href="tel:+919663156749" class="btn btn--gold">Book a Consultation</a>
-      <a href="mailto:thalankideepak@gmail.com" class="btn btn--ghost-inv">Send us a Note</a>
+      <a href="https://www.wealthy.in/partners/fynnect" target="_blank" rel="noopener" class="btn btn--gold">Book a Consultation</a>
     </div>
     <div class="cta-section__contact reveal reveal-delay-4">
       <div class="cta-section__contact-item">
@@ -1383,7 +1551,7 @@ body {
         <div class="footer__socials">
           <a href="#" class="footer__social">in</a>
           <a href="#" class="footer__social">tw</a>
-          <a href="#" class="footer__social">ig</a>
+          <a href="https://www.instagram.com/fynnect?igsh=dmFlcWNjM3U1ZjBo" target="_blank" rel="noopener" class="footer__social">ig</a>
           <a href="#" class="footer__social">yt</a>
         </div>
       </div>
