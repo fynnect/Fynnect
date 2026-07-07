@@ -5,14 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
-<title>FYNNECT — Wealth Planning Beyond Returns</title>
-<meta name="description" content="FYNNECT helps you structure your finances around your goals, milestones, and peace of mind — financial planning, goal-based investing, retirement, tax and NRI planning."/>
+<title>FYNNECT | Financial Planning &amp; Wealth Advisory — India &amp; NRI</title>
+<meta name="description" content="FYNNECT is a financial planning and wealth advisory service for Indian residents and NRIs — goal-based investing, retirement planning, tax planning &amp; ITR filing, portfolio reviews, and family financial planning. Book a free consultation."/>
 <meta name="author" content="FYNNECT Wealth Advisors"/>
 <link rel="canonical" href="https://fynnect.com/"/>
 <meta name="theme-color" content="#0C0B09"/>
 
 <!-- Open Graph / Social -->
 <meta property="og:type" content="website"/>
+<meta property="og:locale" content="en_IN"/>
 <meta property="og:site_name" content="FYNNECT"/>
 <meta property="og:title" content="FYNNECT — Wealth Planning Beyond Returns"/>
 <meta property="og:description" content="Finance designed around your life. Financial planning, goal-based investing, retirement, tax and NRI planning — clarity first, products second."/>
@@ -37,7 +38,50 @@
   "telephone": "+91-96631-56749",
   "email": "deepak@fynnect.com",
   "areaServed": "IN",
-  "founder": { "@type": "Person", "name": "Deepak Thalanki" }
+  "founder": { "@type": "Person", "name": "Deepak Thalanki" },
+  "slogan": "Wealth Planning Beyond Returns",
+  "sameAs": [
+    "https://www.linkedin.com/company/fynnect/",
+    "https://www.instagram.com/fynnect"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does FYNNECT do?",
+      "acceptedAnswer": { "@type": "Answer", "text": "FYNNECT is a financial planning and wealth advisory service. We build complete financial roadmaps covering goal-based investing, retirement planning, portfolio reviews, tax planning and filing, NRI financial planning, family financial planning, and cash flow planning." }
+    },
+    {
+      "@type": "Question",
+      "name": "How is FYNNECT different from a typical agent or distributor?",
+      "acceptedAnswer": { "@type": "Answer", "text": "We are planning-first, not product-first. Your plan is built around your goals and life stage, every recommendation is explainable, and we are transparent about how we work — ask us anything, including how we are compensated." }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens in the first consultation?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A discovery conversation about your income, lifestyle, goals, and concerns. No forms, no jargon, and no sales pitch — just an honest discussion about your financial life and where you want to go." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you work with NRIs?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. We help NRIs navigate FEMA rules, NRE/NRO accounts, repatriation, and investing in India, so cross-border wealth stays simple and compliant." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you help with taxes and ITR filing?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Our in-house Chartered Accountants handle ITR filing, capital gains optimisation, and advance tax, with a tax-efficient strategy that works hand-in-hand with your investments." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I get started?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Book a consultation online, call +91 96631 56749, or email deepak@fynnect.com. One conversation is all it takes to get started." }
+    }
+  ]
 }
 </script>
 
@@ -97,6 +141,21 @@ body {
 
 /* ─── Selection ─── */
 ::selection { background: var(--gold); color: var(--cream); }
+
+/* ─── FAQ ─── */
+.faq { padding: 110px 0; background: var(--warm); }
+.faq__heading { font-family: var(--font-serif); font-weight: 500; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.15; margin-bottom: 48px; }
+.faq__heading em { font-style: italic; color: var(--gold); }
+.faq__list { max-width: 820px; }
+.faq__item { border-bottom: 1px solid var(--border); }
+.faq__item summary {
+  list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+  gap: 20px; padding: 22px 0; font-family: var(--font-serif); font-size: 1.25rem; font-weight: 600; color: var(--ink);
+}
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary::after { content: '+'; font-family: var(--font-sans); font-weight: 300; font-size: 1.4rem; color: var(--gold); transition: transform var(--dur-base) var(--ease); flex-shrink: 0; }
+.faq__item[open] summary::after { transform: rotate(45deg); }
+.faq__answer { padding: 0 0 24px; color: var(--ink-soft); max-width: 700px; }
 
 /* ─── Utilities ─── */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
@@ -1600,7 +1659,7 @@ body {
       <div class="founder-card reveal">
         <div class="founder-card__watermark">D</div>
         <div class="founder-card__avatar" style="padding:0;overflow:hidden;border:2px solid rgba(176,154,114,0.35);">
-          <img src="assets/founder-deepak.jpg" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" alt="Deepak Thalanki" />
+          <img src="assets/founder-deepak.jpg" loading="lazy" decoding="async" width="420" height="420" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" alt="Deepak Thalanki" />
         </div>
         <div class="founder-card__body-wrap">
           <div class="founder-card__info">
@@ -1620,7 +1679,7 @@ body {
       <div class="founder-card reveal reveal-delay-1">
         <div class="founder-card__watermark">B</div>
         <div class="founder-card__avatar" style="padding:0;overflow:hidden;border:2px solid rgba(176,154,114,0.35);">
-          <img src="assets/founder-balaji.jpg" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" alt="Balaji Thalanki" />
+          <img src="assets/founder-balaji.jpg" loading="lazy" decoding="async" width="420" height="420" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" alt="Balaji Thalanki" />
         </div>
         <div class="founder-card__body-wrap">
           <div class="founder-card__info">
@@ -1792,16 +1851,16 @@ body {
       <div class="insight-card reveal">
         <div class="insight-card__thumb">
           <div class="insight-card__thumb-bg" style="background:#0e1810;position:relative;overflow:hidden;padding:0;">
-            <img src="assets/insight-uncertainty.jpg" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Financial stress illustration" />
+            <img src="assets/insight-uncertainty.jpg" loading="lazy" decoding="async" width="800" height="670" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Financial stress illustration" />
           </div>
         </div>
         <div class="insight-card__body">
           <p class="insight-card__tag">Financial Wellbeing</p>
-          <h3 class="insight-card__title">Financial Stress Isn't About Money — It's About Uncertainty</h3>
+          <h3 class="insight-card__title"><a href="insights/financial-stress-is-about-uncertainty.html" style="color:inherit;text-decoration:none;">Financial Stress Isn't About Money — It's About Uncertainty</a></h3>
           <p class="insight-card__excerpt">Most people think financial stress comes from not having enough money. But the real culprit is uncertainty — not knowing what's coming, not having a plan, and feeling like you're always one bad month away from losing control. Here's how clarity changes everything.</p>
           <div class="insight-card__footer">
             <span class="insight-card__date">FYNNECT</span>
-            <a href="https://www.linkedin.com/pulse/financial-stress-isnt-moneyits-uncertainty-fynnect-cdzjc" target="_blank" rel="noopener" class="insight-card__read" style="text-decoration:none;">Read on LinkedIn ↗</a>
+            <a href="insights/financial-stress-is-about-uncertainty.html" class="insight-card__read" style="text-decoration:none;">Read Article →</a>
           </div>
         </div>
       </div>
@@ -1809,16 +1868,16 @@ body {
       <div class="insight-card reveal reveal-delay-2">
         <div class="insight-card__thumb">
           <div class="insight-card__thumb-bg" style="padding:0;overflow:hidden;">
-            <img src="assets/insight-money-peace.jpg" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Why more money doesn't always mean peace" />
+            <img src="assets/insight-money-peace.jpg" loading="lazy" decoding="async" width="800" height="529" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Why more money doesn't always mean peace" />
           </div>
         </div>
         <div class="insight-card__body">
           <p class="insight-card__tag">Wealth Psychology</p>
-          <h3 class="insight-card__title">Why More Money Doesn't Always Mean Peace</h3>
+          <h3 class="insight-card__title"><a href="insights/why-more-money-doesnt-mean-peace.html" style="color:inherit;text-decoration:none;">Why More Money Doesn't Always Mean Peace</a></h3>
           <p class="insight-card__excerpt">A higher salary doesn't automatically bring financial calm. What actually creates peace is clarity — knowing where you stand, where you're going, and having a plan that holds.</p>
           <div class="insight-card__footer">
             <span class="insight-card__date">FYNNECT</span>
-            <a href="https://www.linkedin.com/pulse/why-more-money-doesnt-always-mean-peace-fynnect-npvtc" target="_blank" rel="noopener" class="insight-card__read" style="text-decoration:none;">Read on LinkedIn ↗</a>
+            <a href="insights/why-more-money-doesnt-mean-peace.html" class="insight-card__read" style="text-decoration:none;">Read Article →</a>
           </div>
         </div>
       </div>
@@ -1826,16 +1885,16 @@ body {
       <div class="insight-card reveal reveal-delay-3">
         <div class="insight-card__thumb">
           <div class="insight-card__thumb-bg" style="padding:0;overflow:hidden;">
-            <img src="assets/insight-trust.jpg" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" alt="Why the financial advice industry has a trust problem" />
+            <img src="assets/insight-trust.jpg" loading="lazy" decoding="async" width="800" height="449" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" alt="Why the financial advice industry has a trust problem" />
           </div>
         </div>
         <div class="insight-card__body">
           <p class="insight-card__tag">Financial Advice</p>
-          <h3 class="insight-card__title">Why the Financial Advice Industry Has a Trust Problem</h3>
+          <h3 class="insight-card__title"><a href="insights/financial-advice-trust-problem.html" style="color:inherit;text-decoration:none;">Why the Financial Advice Industry Has a Trust Problem</a></h3>
           <p class="insight-card__excerpt">Most people don't distrust money — they distrust the people selling it to them. Here's why the advice industry lost trust, and what genuinely client-first guidance looks like.</p>
           <div class="insight-card__footer">
             <span class="insight-card__date">FYNNECT</span>
-            <a href="https://www.linkedin.com/pulse/why-financial-advice-industry-has-trust-problem-fynnect-huc0c" target="_blank" rel="noopener" class="insight-card__read" style="text-decoration:none;">Read on LinkedIn ↗</a>
+            <a href="insights/financial-advice-trust-problem.html" class="insight-card__read" style="text-decoration:none;">Read Article →</a>
           </div>
         </div>
       </div>
@@ -1845,6 +1904,41 @@ body {
 </section>
 
 <!-- ═══════════════ CTA ═══════════════ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Common Questions</p>
+      <h2 class="faq__heading">Answers, <em>before you ask.</em></h2>
+    </div>
+    <div class="faq__list reveal reveal-delay-1">
+      <details class="faq__item">
+        <summary>What does FYNNECT do?</summary>
+        <p class="faq__answer">FYNNECT is a financial planning and wealth advisory service. We build complete financial roadmaps covering goal-based investing, retirement planning, portfolio reviews, tax planning and filing, NRI financial planning, family financial planning, and cash flow planning.</p>
+      </details>
+      <details class="faq__item">
+        <summary>How is FYNNECT different from a typical agent or distributor?</summary>
+        <p class="faq__answer">We are planning-first, not product-first. Your plan is built around your goals and life stage, every recommendation is explainable, and we are transparent about how we work — ask us anything, including how we're compensated.</p>
+      </details>
+      <details class="faq__item">
+        <summary>What happens in the first consultation?</summary>
+        <p class="faq__answer">A discovery conversation about your income, lifestyle, goals, and concerns. No forms, no jargon, and no sales pitch — just an honest discussion about your financial life and where you want to go.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Do you work with NRIs?</summary>
+        <p class="faq__answer">Yes. We help NRIs navigate FEMA rules, NRE/NRO accounts, repatriation, and investing in India — so cross-border wealth stays simple and compliant.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Can you help with taxes and ITR filing?</summary>
+        <p class="faq__answer">Yes. Our in-house Chartered Accountants handle ITR filing, capital gains optimisation, and advance tax, with a tax-efficient strategy that works hand-in-hand with your investments.</p>
+      </details>
+      <details class="faq__item">
+        <summary>How do I get started?</summary>
+        <p class="faq__answer">Book a consultation online, call <a href="tel:+919663156749" style="color:var(--gold);">+91 96631 56749</a>, or email <a href="mailto:deepak@fynnect.com" style="color:var(--gold);">deepak@fynnect.com</a>. One conversation is all it takes.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
 <section class="cta-section" id="consult">
   <div class="container" style="position:relative;z-index:1;">
     <p class="cta-section__eyebrow reveal">Ready to Begin</p>
