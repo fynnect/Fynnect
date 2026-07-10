@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self'"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<title>Where to Invest at Every Age — Allocation &amp; Options by Age &amp; Risk | FYNNECT</title>
+<meta name="description" content="An age-by-age guide to investing in India — asset allocation by age and risk profile, and the right instruments for each life stage: mutual funds, PPF, NPS, ELSS, SCSS, bonds, annuities and more."/>
+<link rel="canonical" href="https://fynnect.com/invest-by-age.html"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="FYNNECT"/>
+<meta property="og:title" content="Where to Invest at Every Age"/>
+<meta property="og:description" content="Asset allocation by age and risk profile, and the right investment options for every life stage — from your first salary to retirement."/>
+<meta property="og:url" content="https://fynnect.com/invest-by-age.html"/>
+<meta property="og:image" content="https://fynnect.com/assets/og-image.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="stylesheet" href="assets/fonts.css"/>
+<link rel="icon" href="/favicon.ico" sizes="48x48"/>
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png"/>
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Where to Invest at Every Age — Allocation & Options by Age & Risk",
+  "description": "An age-by-age guide to investing in India: asset allocation by age and risk profile, and the right instruments for each life stage.",
+  "datePublished": "2026-07-10",
+  "author": { "@type": "Organization", "name": "FYNNECT Wealth Advisors", "url": "https://fynnect.com/" },
+  "publisher": { "@type": "Organization", "name": "FYNNECT Wealth Advisors", "url": "https://fynnect.com/" },
+  "mainEntityOfPage": "https://fynnect.com/invest-by-age.html"
+}
+</script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink:#0C0B09; --ink-soft:#3A3832; --cream:#F6F3EE; --paper:#FDFCFA;
+  --gold:#B09A72; --gold-light:#C9B68F; --sage:#7C8B7E;
+  --border:rgba(12,11,9,0.10);
+  --eq:#B09A72; --debt:#7C8B7E; --gld:#D8B95C; --cash:#A9A296;
+}
+body { font-family:'Jost',system-ui,sans-serif; background:var(--cream); color:var(--ink); font-weight:300; line-height:1.8; }
+.wrap { max-width:980px; margin:0 auto; padding:44px 28px 100px; }
+.logo { font-family:'Cormorant Garamond',Georgia,serif; font-size:1.5rem; font-weight:600; letter-spacing:0.06em; color:var(--gold); text-decoration:none; }
+.tag { font-size:0.74rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold); margin:48px 0 14px; }
+h1 { font-family:'Cormorant Garamond',Georgia,serif; font-weight:500; font-size:clamp(2.1rem,5vw,3rem); line-height:1.12; margin-bottom:18px; }
+h1 em { font-style:italic; color:var(--gold); }
+.lede { color:var(--ink-soft); max-width:680px; margin-bottom:14px; }
+h2 { font-family:'Cormorant Garamond',Georgia,serif; font-weight:600; font-size:1.6rem; margin:0 0 6px; }
+p { color:var(--ink-soft); }
+a { color:var(--gold); }
+a:focus-visible, button:focus-visible { outline:2px solid var(--gold); outline-offset:3px; }
+
+/* ── Controls ── */
+.controls { position:sticky; top:0; z-index:50; background:var(--cream); border-bottom:1px solid var(--border); margin:36px -28px 0; padding:14px 28px; }
+.controls__row { display:flex; flex-wrap:wrap; gap:14px 26px; align-items:center; max-width:980px; margin:0 auto; }
+.controls__label { font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink-soft); margin-right:2px; }
+.seg { display:inline-flex; flex-wrap:wrap; gap:6px; }
+.seg button { font-family:inherit; font-size:0.86rem; font-weight:400; letter-spacing:0.02em; padding:8px 16px; border:1px solid var(--border); background:var(--paper); color:var(--ink-soft); border-radius:999px; cursor:pointer; transition:all .25s ease; }
+.seg button:hover { border-color:var(--gold); color:var(--ink); }
+.seg button[aria-pressed="true"] { background:var(--ink); color:var(--cream); border-color:var(--ink); }
+
+/* ── Allocation panel ── */
+.alloc { background:var(--paper); border:1px solid var(--border); border-radius:6px; padding:30px 28px; margin:34px 0 10px; }
+.alloc__head { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:baseline; gap:8px; margin-bottom:6px; }
+.alloc__title { font-family:'Cormorant Garamond',Georgia,serif; font-size:1.45rem; font-weight:600; }
+.alloc__sub { font-size:0.82rem; color:var(--ink-soft); }
+.alloc__bar { display:flex; height:46px; border-radius:4px; overflow:hidden; margin:18px 0 12px; }
+.alloc__bar span { transition:width .5s ease; min-width:0; }
+.alloc__bar .a-eq { background:var(--eq); }
+.alloc__bar .a-debt { background:var(--debt); }
+.alloc__bar .a-gld { background:var(--gld); }
+.alloc__bar .a-cash { background:var(--cash); }
+.alloc__legend { display:flex; flex-wrap:wrap; gap:10px 26px; font-size:0.88rem; color:var(--ink-soft); }
+.alloc__legend b { font-weight:500; color:var(--ink); }
+.dot { display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:7px; vertical-align:baseline; }
+.alloc__note { font-size:0.8rem; color:var(--ink-soft); margin-top:14px; border-top:1px solid var(--border); padding-top:12px; }
+
+/* ── Stage sections ── */
+.stage { display:none; margin-top:38px; }
+.stage.active { display:block; }
+.stage__intro { max-width:720px; margin-bottom:8px; }
+.stage__focus { font-size:0.82rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--sage); margin:10px 0 26px; }
+.cards { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:18px; }
+.card { background:var(--paper); border:1px solid var(--border); border-radius:6px; padding:24px 22px 20px; display:flex; flex-direction:column; }
+.card h3 { font-family:'Cormorant Garamond',Georgia,serif; font-weight:600; font-size:1.22rem; margin-bottom:2px; }
+.card .meta { font-size:0.74rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+.card p { font-size:0.92rem; margin-bottom:14px; flex:1; }
+.chips { display:flex; flex-wrap:wrap; gap:6px; }
+.chip { font-size:0.72rem; letter-spacing:0.04em; padding:3px 10px; border-radius:999px; border:1px solid var(--border); color:var(--ink-soft); background:var(--cream); }
+.chip--risk-low { border-color:rgba(124,139,126,0.5); color:var(--sage); }
+.chip--risk-high { border-color:rgba(176,154,114,0.6); color:#8B7550; }
+
+/* ── Principles + CTA ── */
+.principles { margin-top:64px; border-top:1px solid var(--border); padding-top:44px; }
+.principles ul { list-style:none; margin-top:18px; display:grid; gap:14px; }
+.principles li { color:var(--ink-soft); padding-left:26px; position:relative; }
+.principles li::before { content:'—'; position:absolute; left:0; color:var(--gold); }
+.principles strong { font-weight:500; color:var(--ink); }
+.disclaimer { font-size:0.8rem; color:var(--ink-soft); border:1px solid var(--border); border-radius:4px; background:var(--paper); padding:16px 20px; margin-top:44px; }
+.cta-box { background:#0F0E0B; color:var(--cream); border-radius:4px; padding:34px 30px; margin-top:48px; }
+.cta-box h2 { color:var(--cream); margin-top:0; }
+.cta-box p { color:rgba(246,243,238,0.7); margin-bottom:10px; }
+.btn { display:inline-block; font-size:0.78rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; padding:13px 28px; color:var(--ink); background:var(--gold); border-radius:2px; margin-top:6px; }
+.back { display:inline-block; margin-top:40px; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; border-bottom:1px solid var(--gold); padding-bottom:2px; }
+.wa-float { position:fixed; right:20px; bottom:20px; z-index:90; width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#128C7E; box-shadow:0 4px 14px rgba(12,11,9,0.28); transition:transform 0.3s ease; }
+.wa-float:hover { transform: translateY(-3px) scale(1.06); }
+.wa-float svg { width:26px; height:26px; fill:#FDFCFA; }
+@media (max-width:560px) {
+  .controls { margin:36px -28px 0; }
+  .alloc { padding:24px 18px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="index.html" class="logo">FYNNECT</a>
+
+  <p class="tag">Investing Guide · FYNNECT</p>
+  <h1>Where to invest, <em>at every age.</em></h1>
+  <p class="lede">The right investments at 25 look nothing like the right investments at 65. Pick your age band and risk comfort below — we'll show you a sensible starting allocation and the instruments that typically fit that stage of life in India.</p>
+
+  <div class="controls" id="controls">
+    <div class="controls__row">
+      <span class="controls__label">Your age</span>
+      <div class="seg" id="ageSeg" role="group" aria-label="Select age band">
+        <button data-age="20s" aria-pressed="true">20s</button>
+        <button data-age="30s" aria-pressed="false">30s</button>
+        <button data-age="40s" aria-pressed="false">40s</button>
+        <button data-age="50s" aria-pressed="false">50s</button>
+        <button data-age="60plus" aria-pressed="false">60+</button>
+      </div>
+      <span class="controls__label">Risk comfort</span>
+      <div class="seg" id="riskSeg" role="group" aria-label="Select risk profile">
+        <button data-risk="conservative" aria-pressed="false">Conservative</button>
+        <button data-risk="balanced" aria-pressed="true">Balanced</button>
+        <button data-risk="aggressive" aria-pressed="false">Aggressive</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="alloc" aria-live="polite">
+    <div class="alloc__head">
+      <span class="alloc__title" id="allocTitle">Suggested starting allocation</span>
+      <span class="alloc__sub" id="allocSub"></span>
+    </div>
+    <div class="alloc__bar" id="allocBar" role="img" aria-label="Asset allocation chart">
+      <span class="a-eq" id="barEq"></span><span class="a-debt" id="barDebt"></span><span class="a-gld" id="barGld"></span><span class="a-cash" id="barCash"></span>
+    </div>
+    <div class="alloc__legend">
+      <span><span class="dot" style="background:var(--eq)"></span>Equity <b id="pctEq"></b></span>
+      <span><span class="dot" style="background:var(--debt)"></span>Debt &amp; fixed income <b id="pctDebt"></b></span>
+      <span><span class="dot" style="background:var(--gld)"></span>Gold <b id="pctGld"></b></span>
+      <span><span class="dot" style="background:var(--cash)"></span>Cash / emergency <b id="pctCash"></b></span>
+    </div>
+    <p class="alloc__note">A starting point, not a prescription. Your actual allocation should reflect your goals, income stability, dependants and existing assets — that's what a real financial plan works out.</p>
+  </div>
+
+  <!-- ═══ 20s ═══ -->
+  <section class="stage active" id="stage-20s">
+    <h2>In your 20s — build the habit, let compounding do the heavy lifting.</h2>
+    <p class="stage__intro">Time is your single biggest asset. Even small SIPs started now outgrow much larger investments started a decade later. Keep it simple, keep it automatic, and protect yourself before you invest.</p>
+    <p class="stage__focus">Priorities: emergency fund → term &amp; health insurance → equity SIPs</p>
+    <div class="cards">
+      <div class="card"><h3>Equity Mutual Funds (SIP)</h3><p class="meta">Core · Long-term growth</p><p>Index funds and flexi-cap funds via monthly SIPs form the growth engine of your portfolio. A 10–30 year horizon smooths out market cycles.</p><div class="chips"><span class="chip chip--risk-high">Market risk</span><span class="chip">10+ yr horizon</span><span class="chip">Start ₹500/mo</span></div></div>
+      <div class="card"><h3>ELSS Funds</h3><p class="meta">Tax-saving equity</p><p>Equity funds with a Section 80C deduction (old regime) and the shortest lock-in of any 80C option — just 3 years.</p><div class="chips"><span class="chip chip--risk-high">Market risk</span><span class="chip">3-yr lock-in</span><span class="chip">80C benefit</span></div></div>
+      <div class="card"><h3>EPF / PPF</h3><p class="meta">Forced saving · Debt core</p><p>Your EPF is already working for you; a PPF account adds a tax-free, government-backed debt anchor. 15-year tenure suits long goals.</p><div class="chips"><span class="chip chip--risk-low">Sovereign safety</span><span class="chip">Tax-free (EEE)</span><span class="chip">15-yr tenure</span></div></div>
+      <div class="card"><h3>NPS</h3><p class="meta">Retirement · Extra tax break</p><p>Low-cost retirement vehicle with equity exposure and an additional deduction under 80CCD(1B). Locked until 60 — which, at this age, is a feature.</p><div class="chips"><span class="chip">Locked till 60</span><span class="chip">Very low cost</span><span class="chip">Extra ₹50k deduction</span></div></div>
+      <div class="card"><h3>Liquid Funds / Sweep FD</h3><p class="meta">Emergency fund</p><p>Before anything else: 3–6 months of expenses parked where you can reach it in a day. This is what lets your equity investments stay invested.</p><div class="chips"><span class="chip chip--risk-low">Low risk</span><span class="chip">Instant access</span></div></div>
+      <div class="card"><h3>Term + Health Insurance</h3><p class="meta">Protection first</p><p>Not an investment — but the cheapest it will ever be is now. Pure term cover if anyone depends on your income, and health cover independent of your employer.</p><div class="chips"><span class="chip">Foundation</span><span class="chip">Cheapest in your 20s</span></div></div>
+    </div>
+  </section>
+
+  <!-- ═══ 30s ═══ -->
+  <section class="stage" id="stage-30s">
+    <h2>In your 30s — invest with names on the money.</h2>
+    <p class="stage__intro">Income rises, but so do commitments — home, children, parents. This is the decade to attach every rupee to a goal: retirement, a child's education, a home. Goal-based buckets beat one big undifferentiated pot.</p>
+    <p class="stage__focus">Priorities: goal-mapped SIPs → children's plans → step-up investing with income</p>
+    <div class="cards">
+      <div class="card"><h3>Equity Mutual Funds (Step-up SIP)</h3><p class="meta">Core · Retirement &amp; long goals</p><p>Flexi-cap, large-cap and index funds remain the core. Step up SIPs 10% a year as income grows — it more than doubles the final corpus.</p><div class="chips"><span class="chip chip--risk-high">Market risk</span><span class="chip">Step-up yearly</span></div></div>
+      <div class="card"><h3>Sukanya Samriddhi Yojana</h3><p class="meta">For a daughter under 10</p><p>Among the highest sovereign-backed rates available, tax-free, purpose-locked for her education and future. A natural fit for a daughter's long-term goal.</p><div class="chips"><span class="chip chip--risk-low">Sovereign safety</span><span class="chip">Tax-free (EEE)</span><span class="chip">Girl child only</span></div></div>
+      <div class="card"><h3>PPF + NPS</h3><p class="meta">Debt core · Retirement</p><p>Continue the PPF habit for the debt side of long goals; keep NPS compounding quietly for retirement with its extra tax deduction.</p><div class="chips"><span class="chip chip--risk-low">Sovereign safety</span><span class="chip">Long lock-in</span></div></div>
+      <div class="card"><h3>Hybrid / Aggressive-Hybrid Funds</h3><p class="meta">Medium-term goals (5–8 yrs)</p><p>For goals closer than 8 years — a car, a home down payment — hybrid funds blend equity growth with debt stability so a market dip doesn't derail the date.</p><div class="chips"><span class="chip">Moderate risk</span><span class="chip">5–8 yr goals</span></div></div>
+      <div class="card"><h3>Gold (ETF / Funds)</h3><p class="meta">Diversifier · 5–10%</p><p>A small gold allocation via ETFs or gold funds cushions equity drawdowns and doubles as provision for future family occasions.</p><div class="chips"><span class="chip">Diversifier</span><span class="chip">Cap at ~10%</span></div></div>
+      <div class="card"><h3>Home: EMI vs Invest Discipline</h3><p class="meta">The big decision</p><p>If you buy, keep the EMI under ~35–40% of take-home so SIPs continue. A home is shelter first; it shouldn't be your only asset at 40.</p><div class="chips"><span class="chip">Planning call</span><span class="chip">Talk to us</span></div></div>
+    </div>
+  </section>
+
+  <!-- ═══ 40s ═══ -->
+  <section class="stage" id="stage-40s">
+    <h2>In your 40s — peak earning years. Accelerate, then start de-risking the near goals.</h2>
+    <p class="stage__intro">This is usually the highest-savings decade of your life. Maximise it — while quietly moving money for goals that are now less than five years away (a child's college, for instance) out of equity and into safer instruments.</p>
+    <p class="stage__focus">Priorities: maximise surplus investing → de-risk near-term goals → close protection gaps</p>
+    <div class="cards">
+      <div class="card"><h3>Equity Funds — Large-cap Tilt</h3><p class="meta">Core · Retirement</p><p>Retirement is still 15+ years away — equity stays the engine, but tilt toward large-cap and flexi-cap over narrow, high-volatility themes.</p><div class="chips"><span class="chip chip--risk-high">Market risk</span><span class="chip">Quality tilt</span></div></div>
+      <div class="card"><h3>Target-Maturity Debt Funds / Bonds</h3><p class="meta">Goals due in 3–6 yrs</p><p>For a goal with a known date — college fees, a wedding — target-maturity funds and high-quality bonds lock in yields with predictable outcomes.</p><div class="chips"><span class="chip chip--risk-low">Low-moderate risk</span><span class="chip">Date-matched</span></div></div>
+      <div class="card"><h3>NPS — Increase Contributions</h3><p class="meta">Retirement catch-up</p><p>Raise NPS contributions in peak-income years; the tax deduction is worth the most at your highest slab, and the lock-in no longer feels long.</p><div class="chips"><span class="chip">Tax-efficient</span><span class="chip">Locked till 60</span></div></div>
+      <div class="card"><h3>Debt Mutual Funds</h3><p class="meta">Stability sleeve</p><p>Short-duration and corporate bond funds build the fixed-income sleeve of the portfolio with more flexibility than FDs for larger amounts.</p><div class="chips"><span class="chip chip--risk-low">Low-moderate risk</span><span class="chip">Liquid</span></div></div>
+      <div class="card"><h3>Gold · 5–10%</h3><p class="meta">Diversifier</p><p>Maintain the gold sleeve via ETFs; rebalance if a rally pushes it well past its target weight.</p><div class="chips"><span class="chip">Diversifier</span><span class="chip">Rebalance</span></div></div>
+      <div class="card"><h3>Insurance &amp; Estate Check</h3><p class="meta">Protection review</p><p>Re-check term cover against today's liabilities and lifestyle, top up health insurance, and write a will — the cheapest estate plan there is.</p><div class="chips"><span class="chip">Review point</span><span class="chip">Will / nomination</span></div></div>
+    </div>
+  </section>
+
+  <!-- ═══ 50s ═══ -->
+  <section class="stage" id="stage-50s">
+    <h2>In your 50s — the glide path. Protect what you've built.</h2>
+    <p class="stage__intro">The last working decade is about sequencing risk: a market crash two years before retirement hurts far more than one at 35. Gradually shift from growth to preservation — without abandoning equity entirely, because retirement itself may last 30 years.</p>
+    <p class="stage__focus">Priorities: yearly shift from equity to debt → build the first 5 years of retirement income → clear debts</p>
+    <div class="cards">
+      <div class="card"><h3>Systematic Transfer to Debt</h3><p class="meta">The glide path</p><p>Each year, move a slice of equity gains into debt funds or FDs via STP. By retirement, the first five years of expenses should sit entirely in safe assets.</p><div class="chips"><span class="chip chip--risk-low">De-risking</span><span class="chip">STP yearly</span></div></div>
+      <div class="card"><h3>Conservative Hybrid Funds</h3><p class="meta">Balanced core</p><p>Funds that hold mostly debt with a modest equity kicker — a natural home for the middle years of retirement money.</p><div class="chips"><span class="chip">Moderate risk</span><span class="chip">Income + growth</span></div></div>
+      <div class="card"><h3>PPF Extension</h3><p class="meta">Tax-free debt</p><p>A maturing PPF account can be extended in 5-year blocks with partial withdrawals — one of the best tax-free income sources in retirement.</p><div class="chips"><span class="chip chip--risk-low">Sovereign safety</span><span class="chip">Tax-free</span></div></div>
+      <div class="card"><h3>Bank FDs / RBI Bonds</h3><p class="meta">Capital safety</p><p>Ladder FDs across tenures and consider RBI Floating Rate Savings Bonds for the safest layer of the retirement stack.</p><div class="chips"><span class="chip chip--risk-low">Very low risk</span><span class="chip">Laddered</span></div></div>
+      <div class="card"><h3>Equity — Keep 30–40%</h3><p class="meta">Longevity hedge</p><p>Don't go to zero equity: retirement can last three decades, and some growth is what keeps income ahead of inflation at 75.</p><div class="chips"><span class="chip chip--risk-high">Market risk</span><span class="chip">Inflation hedge</span></div></div>
+      <div class="card"><h3>Debt-Free by 60</h3><p class="meta">The quiet goal</p><p>Prioritise closing the home loan and any lingering EMIs before income stops. A debt-free retirement needs a much smaller corpus.</p><div class="chips"><span class="chip">Planning call</span><span class="chip">Talk to us</span></div></div>
+    </div>
+  </section>
+
+  <!-- ═══ 60+ ═══ -->
+  <section class="stage" id="stage-60plus">
+    <h2>60 and beyond — turn the corpus into a monthly salary.</h2>
+    <p class="stage__intro">The goal flips: not growing money, but drawing a reliable, tax-efficient income from it for 25–30 years. Senior citizens get access to some of the best guaranteed instruments in India — use those first, then let mutual funds handle inflation.</p>
+    <p class="stage__focus">Priorities: guaranteed income floor → inflation protection → simplicity &amp; nomination</p>
+    <div class="cards">
+      <div class="card"><h3>Senior Citizens' Savings Scheme (SCSS)</h3><p class="meta">First stop at 60</p><p>Government-backed, quarterly payouts, among the highest sovereign rates available, with an investment limit of ₹30 lakh per person. The anchor of most retirement income plans.</p><div class="chips"><span class="chip chip--risk-low">Sovereign safety</span><span class="chip">Quarterly income</span><span class="chip">₹30L cap · 5 yrs</span></div></div>
+      <div class="card"><h3>RBI Floating Rate Savings Bonds</h3><p class="meta">Sovereign · 7 yrs</p><p>Backed by the Government of India with a rate that resets with NSC — no upper investment limit, making it the natural next layer after SCSS is full.</p><div class="chips"><span class="chip chip--risk-low">Sovereign safety</span><span class="chip">No limit</span><span class="chip">Half-yearly payout</span></div></div>
+      <div class="card"><h3>Post Office Monthly Income Scheme</h3><p class="meta">Fixed monthly payout</p><p>A simple, government-backed scheme paying a fixed amount every month — up to ₹9 lakh single / ₹15 lakh joint.</p><div class="chips"><span class="chip chip--risk-low">Sovereign safety</span><span class="chip">Monthly income</span></div></div>
+      <div class="card"><h3>Senior Citizen Bank FDs</h3><p class="meta">Extra rate · flexible</p><p>Banks pay seniors ~0.25–0.75% extra. Ladder FDs across 1–5 years for liquidity, and use the 80TTB deduction on interest up to ₹50,000.</p><div class="chips"><span class="chip chip--risk-low">Low risk (DICGC ₹5L)</span><span class="chip">80TTB benefit</span></div></div>
+      <div class="card"><h3>Immediate Annuities</h3><p class="meta">Income for life</p><p>Hand an insurer a lump sum, receive a guaranteed pension for life — the only instrument that removes the risk of outliving your money. Best for a slice, not the whole corpus.</p><div class="chips"><span class="chip chip--risk-low">Guaranteed for life</span><span class="chip">Irreversible</span></div></div>
+      <div class="card"><h3>SWP from Hybrid / Debt Funds</h3><p class="meta">Tax-efficient income</p><p>A Systematic Withdrawal Plan from conservative hybrid or debt funds creates a monthly "salary" that is usually more tax-efficient than interest income.</p><div class="chips"><span class="chip">Moderate risk</span><span class="chip">Tax-efficient</span></div></div>
+      <div class="card"><h3>Equity Funds — 20–30%</h3><p class="meta">The inflation engine</p><p>A modest equity sleeve — large-cap or index funds untouched for years 10–25 of retirement — is what keeps the income growing as prices double every 10–12 years.</p><div class="chips"><span class="chip chip--risk-high">Market risk</span><span class="chip">Don't skip this</span></div></div>
+      <div class="card"><h3>Health Cover &amp; Estate</h3><p class="meta">Protect the plan</p><p>Senior health insurance (or a dedicated medical corpus), updated nominations on every account, and a registered will — the unglamorous pieces that protect everything else.</p><div class="chips"><span class="chip">Foundation</span><span class="chip">Review yearly</span></div></div>
+    </div>
+  </section>
+
+  <div class="principles">
+    <h2>Five rules that hold at every age</h2>
+    <ul>
+      <li><strong>Emergency fund before investments.</strong> 3–6 months of expenses (12 in retirement) in liquid assets is what lets everything else stay invested.</li>
+      <li><strong>Insurance is not an investment.</strong> Buy pure term and health cover; invest the difference. Avoid bundled products that do both badly.</li>
+      <li><strong>Match the instrument to the goal's date.</strong> Equity for 7+ years, hybrid for 4–7, debt and deposits for anything sooner.</li>
+      <li><strong>Rebalance once a year.</strong> Selling a little of what ran up and buying what lagged is the discipline that quietly adds returns.</li>
+      <li><strong>Taxes and costs compound too.</strong> A 1% saved in fees or tax, every year for 25 years, is a very large number.</li>
+    </ul>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Disclaimer:</strong> This page is educational and general in nature — it is not personalised investment advice or a recommendation to buy any product. Interest rates on small-savings schemes (SCSS, PPF, POMIS, SSY, RBI bonds) are set by the government and revised periodically; verify current rates before investing. Mutual fund investments are subject to market risks; read all scheme-related documents carefully. Please consult a qualified adviser before acting.
+  </div>
+
+  <div class="cta-box">
+    <h2>Your age is a starting point. Your plan is personal.</h2>
+    <p>Two 60-year-olds with the same corpus can need completely different portfolios. A one-hour conversation maps your goals, income and risks to an allocation that's actually yours.</p>
+    <a href="https://www.wealthy.in/partners/fynnect" target="_blank" rel="noopener" class="btn">Book a Consultation</a>
+  </div>
+
+  <a href="index.html" class="back">← Back to Home</a>
+</div>
+
+<a href="https://wa.me/919663156749?text=Hi%20FYNNECT%2C%20I%27d%20like%20help%20planning%20my%20investments%20for%20my%20age%20and%20goals." target="_blank" rel="noopener" class="wa-float" aria-label="Chat with FYNNECT on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.82-1.31-1.26-2.83-1.26-4.38 0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24s-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
+</a>
+
+<script>
+(function () {
+  var allocations = {
+    "20s":    { conservative:[50,35,5,10], balanced:[70,18,5,7],  aggressive:[85,5,5,5] },
+    "30s":    { conservative:[45,38,7,10], balanced:[65,22,6,7],  aggressive:[80,10,5,5] },
+    "40s":    { conservative:[38,45,7,10], balanced:[55,32,6,7],  aggressive:[70,20,5,5] },
+    "50s":    { conservative:[25,58,7,10], balanced:[40,45,6,9],  aggressive:[55,33,5,7] },
+    "60plus": { conservative:[15,65,5,15], balanced:[25,58,5,12], aggressive:[35,48,5,12] }
+  };
+  var labels = { "20s":"in your 20s", "30s":"in your 30s", "40s":"in your 40s", "50s":"in your 50s", "60plus":"at 60+" };
+  var age = "20s", risk = "balanced";
+
+  function render() {
+    var a = allocations[age][risk];
+    var ids = ["Eq","Debt","Gld","Cash"];
+    for (var i = 0; i < 4; i++) {
+      document.getElementById("bar" + ids[i]).style.width = a[i] + "%";
+      document.getElementById("pct" + ids[i]).textContent = a[i] + "%";
+    }
+    document.getElementById("allocSub").textContent =
+      labels[age] + " · " + risk.charAt(0).toUpperCase() + risk.slice(1) + " profile";
+    var stages = document.querySelectorAll(".stage");
+    for (var j = 0; j < stages.length; j++) stages[j].classList.remove("active");
+    document.getElementById("stage-" + age).classList.add("active");
+  }
+
+  function wire(segId, attr, set) {
+    var seg = document.getElementById(segId);
+    seg.addEventListener("click", function (e) {
+      var btn = e.target.closest("button");
+      if (!btn) return;
+      var btns = seg.querySelectorAll("button");
+      for (var i = 0; i < btns.length; i++) btns[i].setAttribute("aria-pressed", "false");
+      btn.setAttribute("aria-pressed", "true");
+      set(btn.getAttribute(attr));
+      render();
+    });
+  }
+  wire("ageSeg", "data-age", function (v) { age = v; });
+  wire("riskSeg", "data-risk", function (v) { risk = v; });
+  render();
+})();
+</script>
+</body>
+</html>
