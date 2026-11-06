@@ -1023,55 +1023,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
   line-height: 1.8;
 }
 
-/* ─────────────────────────────────────────
-   PHILOSOPHY
-───────────────────────────────────────── */
-.philosophy {
-  padding: 160px 0;
-  background: var(--warm);
-  position: relative;
-  overflow: hidden;
-}
-.philosophy::before {
-  content: '"';
-  position: absolute;
-  top: -40px; left: 20px;
-  font-family: var(--font-serif);
-  font-size: 30rem;
-  line-height: 1;
-  color: rgba(176,154,114,0.07);
-  pointer-events: none;
-  user-select: none;
-}
-.philosophy__inner { position: relative; z-index: 1; }
-.philosophy__quote {
-  font-family: var(--font-serif);
-  font-size: clamp(1.9rem, 4.5vw, 4rem);
-  font-weight: 300;
-  line-height: 1.25;
-  color: var(--ink);
-  letter-spacing: -0.01em;
-  max-width: 860px;
-  margin-bottom: 20px;
-}
-.philosophy__quote em { font-style: italic; color: var(--gold); }
 
-.philosophy__attr {
-  font-size: 0.8rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--sage);
-  margin-bottom: 80px;
-}
 
-.philosophy__pillars {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  margin-top: 80px;
-  border-top: 1px solid var(--border);
-  padding-top: 60px;
-}
 .pillar__icon { font-size: 1.8rem; margin-bottom: 16px; }
 .pillar__title {
   font-family: var(--font-serif);
@@ -1517,7 +1470,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
   .about { padding: 80px 0; }
   .services { padding: 72px 0; }
   .process { padding: 72px 0; }
-  .philosophy { padding: 80px 0; }
   .insights { padding: 72px 0; }
   .cta-section { padding: 80px 0; }
   .founders { padding: 72px 0; }
@@ -1548,10 +1500,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
   .process-step { padding: 0; }
   .process-step:not(:last-child)::after { display: none; }
 
-  /* Philosophy */
-  .philosophy__pillars { grid-template-columns: 1fr; gap: 28px; }
-  .philosophy__quote { font-size: clamp(1.55rem, 5vw, 2.2rem); }
-  .philosophy__attr { margin-bottom: 48px; }
 
   /* Founders */
   .founders__header { flex-direction: column; align-items: flex-start; gap: 12px; }
@@ -1609,11 +1557,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
   .insight-card__body { padding: 18px; gap: 8px; }
   .insight-card__title { font-size: 1.05rem; }
 
-  /* Philosophy */
-  .philosophy__quote { font-size: clamp(1.4rem, 6vw, 1.9rem); }
-  .philosophy__pillars { gap: 24px; }
-  .philosophy { padding: 72px 0; }
-  .philosophy__attr { margin-bottom: 40px; }
 
   /* CTA */
   .cta-section { padding: 72px 0; }
@@ -1890,23 +1833,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
         <div class="process-step__num">04</div>
         <h3 class="process-step__title">Review &amp; Rebalance</h3>
         <p class="process-step__desc">Regular reviews as your life and markets change.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════ PHILOSOPHY ═══════════════ -->
-<section class="philosophy">
-  <div class="container">
-    <div class="philosophy__inner">
-      <div class="reveal">
-        <p class="section-label">Our Philosophy</p>
-        <blockquote class="philosophy__quote">
-          "Investments are tools.<br/>
-          The goal is a <em>better financial life.</em>"
-        </blockquote>
-        <p class="philosophy__attr">— The FYNNECT Philosophy</p>
       </div>
 
     </div>
