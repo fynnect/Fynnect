@@ -1,7 +1,6 @@
 /* Google Analytics 4 for fynnect.com.
    Stays off until GA_ID holds the property's Measurement ID (looks like "G-XXXXXXXXXX").
-   Conversion events sent: generate_lead, get_started_click, whatsapp_click,
-   invest_online_click, email_click. */
+   Conversion events sent: generate_lead, get_started_click, invest_online_click, email_click. */
 (function () {
   var GA_ID = 'G-DCLQPWHQ1E';
 
@@ -24,14 +23,13 @@
     if (!a) return;
     var href = a.getAttribute('href') || '';
     var ev = null;
-    if (href.indexOf('wa.me/') !== -1) ev = 'whatsapp_click';
-    else if (href.indexOf('wealthy.in') !== -1) ev = 'invest_online_click';
+    if (href.indexOf('wealthy.in') !== -1) ev = 'invest_online_click';
     else if (href.indexOf('mailto:') === 0) ev = 'email_click';
     else if (/#consult$/.test(href)) ev = 'get_started_click';
     if (ev) gtag('event', ev, { link_text: (a.textContent || '').trim().slice(0, 60) });
   }, true);
 
   document.addEventListener('fynnect:lead', function (e) {
-    gtag('event', 'generate_lead', { goal: (e.detail && e.detail.goal) || 'not specified', method: (e.detail && e.detail.method) || 'email' });
+    gtag('event', 'generate_lead', { goal: (e.detail && e.detail.goal) || 'not specified', method: (e.detail && e.detail.method) || 'form' });
   });
 })();

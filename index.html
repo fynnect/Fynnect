@@ -82,7 +82,7 @@
     {
       "@type": "Question",
       "name": "How do I get started?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Tap Get Started, message us on WhatsApp, or email deepak@fynnect.com." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Tap Get Started or email deepak@fynnect.com." }
     }
   ]
 }
@@ -232,16 +232,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
   outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 2px;
 }
 
-/* ─── WhatsApp float ─── */
-.wa-float {
-  position: fixed; right: 20px; bottom: 20px; z-index: 90;
-  width: 48px; height: 48px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  background: #128C7E; box-shadow: 0 4px 14px rgba(12,11,9,0.28);
-  transition: transform var(--dur-base) var(--ease), box-shadow var(--dur-base) var(--ease);
-}
-.wa-float:hover { transform: translateY(-3px) scale(1.06); box-shadow: 0 8px 20px rgba(12,11,9,0.34); }
-.wa-float svg { width: 26px; height: 26px; fill: #FDFCFA; }
 
 /* ─── FAQ ─── */
 .faq { padding: 110px 0; background: var(--warm); }
@@ -1970,7 +1960,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
       </details>
       <details class="faq__item">
         <summary>How do I get started?</summary>
-        <p class="faq__answer">Tap Get Started, message us on WhatsApp, or email <a href="mailto:deepak@fynnect.com" style="color:var(--gold);">deepak@fynnect.com</a>.</p>
+        <p class="faq__answer">Tap Get Started or email <a href="mailto:deepak@fynnect.com" style="color:var(--gold);">deepak@fynnect.com</a>.</p>
       </details>
     </div>
   </div>
@@ -1996,7 +1986,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
           <input id="enqName" name="name" type="text" autocomplete="name" required maxlength="80"/>
         </div>
         <div class="enquiry__field">
-          <label for="enqPhone">Phone / WhatsApp</label>
+          <label for="enqPhone">Phone</label>
           <input id="enqPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required pattern="[0-9+\s\-\(\)]{8,20}" placeholder="+91"/>
         </div>
         <div class="enquiry__field">
@@ -2095,10 +2085,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
   </div>
 </footer>
 
-<!-- WhatsApp float -->
-<a href="https://wa.me/919663156749?text=Hi%20FYNNECT%2C%20I%27d%20like%20to%20know%20more%20about%20your%20services." target="_blank" rel="noopener" class="wa-float" aria-label="Chat with FYNNECT on WhatsApp">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.82-1.31-1.26-2.83-1.26-4.38 0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24s-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
-</a>
 
 <script src="/assets/analytics.js" defer></script>
 <script>
@@ -2200,7 +2186,7 @@ if (glow && window.matchMedia('(hover: hover) and (prefers-reduced-motion: no-pr
   }, { passive: true });
 }
 
-/* ─── Enquiry form: emailed via Web3Forms; WhatsApp fallback so no enquiry is lost ─── */
+/* ─── Enquiry form: emailed via Web3Forms; email fallback if sending fails ─── */
 const WEB3FORMS_KEY = '493e67c5-076d-41dd-af89-b4e512d07073';
 const enquiry = document.getElementById('enquiryForm');
 if (enquiry) {
@@ -2208,16 +2194,9 @@ if (enquiry) {
   const doneEl = document.getElementById('enquiryDone');
   const btn = enquiry.querySelector('.enquiry__submit');
   const label = btn.textContent;
-  const waLink = d => 'https://wa.me/919663156749?text=' + encodeURIComponent(
-    "Hi FYNNECT, I'd like a callback.\nName: " + d.name + '\nPhone: ' + d.phone +
+  const mailLink = d => 'mailto:deepak@fynnect.com?subject=' + encodeURIComponent('Enquiry from fynnect.com') +
+    '&body=' + encodeURIComponent("Hi FYNNECT, I'd like a callback.\n\nName: " + d.name + '\nPhone: ' + d.phone +
     (d.email ? '\nEmail: ' + d.email : '') + '\nLooking for: ' + d.goal);
-  const finish = (title, text, method, goal) => {
-    enquiry.hidden = true;
-    doneEl.querySelector('strong').textContent = title;
-    doneEl.querySelector('p').textContent = text;
-    doneEl.hidden = false;
-    document.dispatchEvent(new CustomEvent('fynnect:lead', { detail: { goal, method } }));
-  };
   enquiry.addEventListener('submit', async e => {
     e.preventDefault();
     statusEl.textContent = '';
@@ -2231,11 +2210,6 @@ if (enquiry) {
     }
     const d = { name: enquiry.elements.name.value.trim(), phone: phone.value.trim(),
                 email: enquiry.elements.email.value.trim(), goal: enquiry.elements.goal.value };
-    if (!WEB3FORMS_KEY) {
-      window.open(waLink(d), '_blank', 'noopener');
-      finish('Almost done.', 'WhatsApp has opened with your details — just tap send.', 'whatsapp', d.goal);
-      return;
-    }
     btn.disabled = true;
     btn.textContent = 'Sending…';
     try {
@@ -2247,14 +2221,16 @@ if (enquiry) {
       });
       const out = await res.json().catch(() => ({}));
       if (!res.ok || out.success !== true) throw new Error(out.message || 'Send failed');
-      finish('Thank you.', "We've received your details and will be in touch shortly.", 'email', d.goal);
+      enquiry.hidden = true;
+      doneEl.hidden = false;
+      document.dispatchEvent(new CustomEvent('fynnect:lead', { detail: { goal: d.goal, method: 'form' } }));
     } catch (err) {
       console.warn('Enquiry not sent:', err.message);
       statusEl.textContent = '';
       statusEl.append("Couldn't send just now. ");
       const a = document.createElement('a');
-      a.href = waLink(d); a.target = '_blank'; a.rel = 'noopener';
-      a.textContent = 'Send your details on WhatsApp instead →';
+      a.href = mailLink(d);
+      a.textContent = 'Email your details instead →';
       statusEl.append(a);
       btn.disabled = false;
       btn.textContent = label;
