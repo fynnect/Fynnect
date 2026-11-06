@@ -3,7 +3,7 @@
    Conversion events sent: generate_lead, get_started_click, whatsapp_click,
    invest_online_click, email_click. */
 (function () {
-  var GA_ID = '';
+  var GA_ID = 'G-DCLQPWHQ1E';
 
   if (!GA_ID || navigator.doNotTrack === '1' || window.doNotTrack === '1') return;
 

@@ -2238,6 +2238,7 @@ if (enquiry) {
       doneEl.hidden = false;
       document.dispatchEvent(new CustomEvent('fynnect:lead', { detail: { goal: data.goal } }));
     } catch (err) {
+      console.warn('Enquiry not sent:', err.message);
       statusEl.textContent = "Couldn't send just now — please message us on WhatsApp or email deepak@fynnect.com.";
       btn.disabled = false;
       btn.textContent = label;
