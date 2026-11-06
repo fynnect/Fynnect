@@ -1987,6 +1987,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
       Leave your details — we'll call you back. No pressure, no jargon.
     </p>
     <form class="enquiry reveal reveal-delay-3" id="enquiryForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+      <input type="hidden" name="access_key" value="493e67c5-076d-41dd-af89-b4e512d07073"/>
       <input type="hidden" name="subject" value="New enquiry from fynnect.com"/>
       <div class="enquiry__honey" aria-hidden="true"><label>Leave blank <input type="checkbox" name="botcheck" tabindex="-1"/></label></div>
       <div class="enquiry__grid">
@@ -2200,7 +2201,7 @@ if (glow && window.matchMedia('(hover: hover) and (prefers-reduced-motion: no-pr
 }
 
 /* ─── Enquiry form: emailed via Web3Forms; WhatsApp fallback so no enquiry is lost ─── */
-const WEB3FORMS_KEY = '';   /* paste the Web3Forms access key here */
+const WEB3FORMS_KEY = '493e67c5-076d-41dd-af89-b4e512d07073';
 const enquiry = document.getElementById('enquiryForm');
 if (enquiry) {
   const statusEl = document.getElementById('enquiryStatus');
