@@ -116,9 +116,23 @@
 }
 </script>
 
-<link rel="stylesheet" href="assets/fonts.css"/>
+<link rel="preload" href="assets/fonts/cormorant-garamond-300.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="preload" href="assets/fonts/cormorant-garamond-300-italic.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="preload" href="assets/fonts/jost-300.woff2" as="font" type="font/woff2" crossorigin/>
 
 <style>
+/* Self-hosted Google Fonts (latin subset) */
+@font-face { font-family: 'Cormorant Garamond'; font-style: italic; font-weight: 300; font-display: swap; src: url('assets/fonts/cormorant-garamond-300-italic.woff2') format('woff2'); }
+@font-face { font-family: 'Cormorant Garamond'; font-style: italic; font-weight: 400; font-display: swap; src: url('assets/fonts/cormorant-garamond-400-italic.woff2') format('woff2'); }
+@font-face { font-family: 'Cormorant Garamond'; font-style: normal; font-weight: 300; font-display: swap; src: url('assets/fonts/cormorant-garamond-300.woff2') format('woff2'); }
+@font-face { font-family: 'Cormorant Garamond'; font-style: normal; font-weight: 400; font-display: swap; src: url('assets/fonts/cormorant-garamond-400.woff2') format('woff2'); }
+@font-face { font-family: 'Cormorant Garamond'; font-style: normal; font-weight: 500; font-display: swap; src: url('assets/fonts/cormorant-garamond-500.woff2') format('woff2'); }
+@font-face { font-family: 'Cormorant Garamond'; font-style: normal; font-weight: 600; font-display: swap; src: url('assets/fonts/cormorant-garamond-600.woff2') format('woff2'); }
+@font-face { font-family: 'Jost'; font-style: normal; font-weight: 300; font-display: swap; src: url('assets/fonts/jost-300.woff2') format('woff2'); }
+@font-face { font-family: 'Jost'; font-style: normal; font-weight: 400; font-display: swap; src: url('assets/fonts/jost-400.woff2') format('woff2'); }
+@font-face { font-family: 'Jost'; font-style: normal; font-weight: 500; font-display: swap; src: url('assets/fonts/jost-500.woff2') format('woff2'); }
+@font-face { font-family: 'Jost'; font-style: normal; font-weight: 600; font-display: swap; src: url('assets/fonts/jost-600.woff2') format('woff2'); }
+
 /* ─── Reset & Base ─── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -129,6 +143,7 @@
   --warm:       #EDE8DF;
   --gold:       #B09A72;
   --gold-light: #C9B48F;
+  --gold-deep:  #8B7550;
   --sage:       #7C8B7E;
   --white:      #FDFCFA;
   --border:     rgba(12,11,9,0.10);
@@ -223,15 +238,15 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
 /* ─── Reveal Animations ─── */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  transform: translateY(20px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.22s; }
-.reveal-delay-3 { transition-delay: 0.34s; }
-.reveal-delay-4 { transition-delay: 0.46s; }
-.reveal-delay-5 { transition-delay: 0.58s; }
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+.reveal-delay-4 { transition-delay: 0.32s; }
+.reveal-delay-5 { transition-delay: 0.4s; }
 
 /* ─────────────────────────────────────────
    NAV
@@ -354,9 +369,11 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
   transform: translateY(-2px) scale(1.01);
 }
 
-.nav.scrolled .nav__links a { color: #8B7550; }
+.nav.scrolled .nav__links a { color: var(--gold-deep); }
 .nav.scrolled .nav__links a:hover { color: var(--gold); }
 .nav.scrolled .nav__hamburger span { background: var(--ink-soft); }
+.nav:not(.scrolled) .btn--dark { background: var(--gold); color: var(--ink); }
+.nav:not(.scrolled) .btn--dark:hover { background: var(--gold-light); box-shadow: 0 10px 32px rgba(176,154,114,0.3); }
 .nav__hamburger {
   display: none;
   flex-direction: column;
@@ -414,6 +431,19 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
   100% { opacity: 0.85; }
 }
 
+/* Cursor glow (desktop) — moved via transform so it stays on the compositor */
+.hero__glow {
+  position: absolute; left: 0; top: 0;
+  width: 70vmax; height: 70vmax; margin: -35vmax 0 0 -35vmax;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(176,154,114,0.20), transparent);
+  opacity: 0; pointer-events: none; will-change: transform;
+  transition: opacity 0.6s var(--ease);
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .hero:hover .hero__glow { opacity: 1; }
+}
+
 /* Grain overlay */
 .hero__grain {
   position: absolute;
@@ -450,7 +480,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
   align-items: center;
   gap: 14px;
   opacity: 0;
-  animation: fadeUp 1s var(--ease) 0.3s forwards;
+  animation: fadeUp 0.8s var(--ease) 0.05s forwards;
 }
 .hero__eyebrow::before {
   content: '';
@@ -467,7 +497,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
   letter-spacing: -0.01em;
   max-width: 860px;
   opacity: 0;
-  animation: fadeUp 1.1s var(--ease) 0.5s forwards;
+  animation: fadeUp 0.9s var(--ease) 0.1s forwards;
 }
 .hero__headline em {
   font-style: italic;
@@ -481,7 +511,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
   max-width: 520px;
   line-height: 1.8;
   opacity: 0;
-  animation: fadeUp 1s var(--ease) 0.75s forwards;
+  animation: fadeUp 0.8s var(--ease) 0.25s forwards;
 }
 
 .hero__ctas {
@@ -491,7 +521,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
   margin-top: 48px;
   flex-wrap: wrap;
   opacity: 0;
-  animation: fadeUp 1s var(--ease) 0.95s forwards;
+  animation: fadeUp 0.8s var(--ease) 0.4s forwards;
 }
 
 .hero__scroll {
@@ -507,7 +537,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
   letter-spacing: 0.16em;
   text-transform: uppercase;
   opacity: 0;
-  animation: fadeUp 1s var(--ease) 1.4s forwards;
+  animation: fadeUp 0.8s var(--ease) 0.8s forwards;
   z-index: 2;
 }
 .hero__scroll-line {
@@ -526,7 +556,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
+  from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
@@ -541,7 +571,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--gold-deep);
   margin-bottom: 24px;
 }
 .section-label::before {
@@ -815,10 +845,10 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
 .services__top {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 64px;
-  gap: 32px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 56px;
+  gap: 14px;
 }
 .services__heading {
   font-family: var(--font-serif);
@@ -830,11 +860,10 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
 }
 .services__heading em { font-style: italic; color: var(--gold); }
 .services__sub {
-  font-size: 0.88rem;
+  font-size: 1rem;
   color: var(--ink-soft);
-  max-width: 320px;
-  text-align: right;
-  line-height: 1.8;
+  max-width: 480px;
+  line-height: 1.7;
 }
 
 .services__grid {
@@ -1646,6 +1675,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
 <!-- ═══════════════ HERO ═══════════════ -->
 <section class="hero" id="main-content">
   <div class="hero__bg"></div>
+  <div class="hero__glow" aria-hidden="true"></div>
   <div class="hero__grain"></div>
   <div class="hero__line-deco"></div>
   <div class="container hero__content">
@@ -2080,9 +2110,13 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
 <script>
 /* ─── Nav scroll effect ─── */
 const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 60);
-}, { passive: true });
+let navScrolled = null;
+const setNav = () => {
+  const s = window.scrollY > 60;
+  if (s !== navScrolled) { navScrolled = s; nav.classList.toggle('scrolled', s); }
+};
+window.addEventListener('scroll', setNav, { passive: true });
+setNav();
 
 /* ─── Hamburger menu ─── */
 const hamburger = document.getElementById('hamburger');
@@ -2156,16 +2190,19 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
 /* ─── Subtle cursor glow on hero (desktop only) ─── */
 const hero = document.querySelector('.hero');
-if (window.matchMedia('(hover: hover)').matches) {
+const glow = document.querySelector('.hero__glow');
+if (glow && window.matchMedia('(hover: hover) and (prefers-reduced-motion: no-preference)').matches) {
+  let gx = 0, gy = 0, ticking = false;
   hero.addEventListener('mousemove', e => {
-    const x = (e.clientX / window.innerWidth) * 100;
-    const y = (e.clientY / window.innerHeight) * 100;
-    document.querySelector('.hero__bg').style.backgroundImage = `
-      radial-gradient(ellipse 55% 55% at ${x}% ${y}%, rgba(176,154,114,0.22) 0%, transparent 60%),
-      radial-gradient(ellipse 70% 60% at 80% 20%, rgba(176,154,114,0.14) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 70% at 10% 80%, rgba(124,139,126,0.12) 0%, transparent 55%),
-      linear-gradient(160deg, #0F0E0B 0%, #1A1814 40%, #0C0B09 100%)
-    `;
+    const r = hero.getBoundingClientRect();
+    gx = e.clientX - r.left; gy = e.clientY - r.top;
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(() => {
+        glow.style.transform = `translate3d(${gx}px, ${gy}px, 0)`;
+        ticking = false;
+      });
+    }
   }, { passive: true });
 }
 </script>
