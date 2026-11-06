@@ -5,7 +5,8 @@
 (function () {
   var GA_ID = 'G-DCLQPWHQ1E';
 
-  if (!GA_ID || navigator.doNotTrack === '1' || window.doNotTrack === '1') return;
+  var host = location.hostname.replace(/^www\./, '');
+  if (!GA_ID || host !== 'fynnect.com' || navigator.doNotTrack === '1' || window.doNotTrack === '1') return;
 
   window.dataLayer = window.dataLayer || [];
   function gtag() { window.dataLayer.push(arguments); }
@@ -31,6 +32,6 @@
   }, true);
 
   document.addEventListener('fynnect:lead', function (e) {
-    gtag('event', 'generate_lead', { goal: (e.detail && e.detail.goal) || 'not specified' });
+    gtag('event', 'generate_lead', { goal: (e.detail && e.detail.goal) || 'not specified', method: (e.detail && e.detail.method) || 'email' });
   });
 })();

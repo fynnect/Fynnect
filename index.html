@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' 'unsafe-inline' https://*.googletagmanager.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.g.doubleclick.net https://*.google.com https://*.google.co.in; connect-src 'self' https://formsubmit.co https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://*.google.com https://*.google.co.in; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' 'unsafe-inline' https://*.googletagmanager.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.g.doubleclick.net https://*.google.com https://*.google.co.in; connect-src 'self' https://api.web3forms.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://*.google.com https://*.google.co.in; object-src 'none'; base-uri 'self'; form-action 'self' https://api.web3forms.com"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
 <title>FYNNECT | Goal-Based Investing for Resident Indians &amp; NRIs</title>
 <meta name="description" content="FYNNECT helps resident Indians and NRIs invest for their goals — risk profiling, fund selection, SIPs, retirement and children's goals, portfolio reviews and tax filing support. AMFI Registered Mutual Fund Distributor (ARN-350960)."/>
@@ -214,6 +214,7 @@ body {
 .enquiry__submit:disabled { opacity: 0.6; cursor: wait; transform: none; }
 .enquiry__note { font-size: 0.75rem; color: rgba(246,243,238,0.4); text-align: center; margin-top: 14px; }
 .enquiry__note a { color: rgba(246,243,238,0.6); }
+.enquiry__status a { color: var(--gold-light); }
 .enquiry__status { min-height: 1.4em; font-size: 0.85rem; color: #E0B3A2; text-align: center; margin-top: 10px; }
 .enquiry__done { max-width: 560px; margin: 0 auto; padding: 28px; border: 1px solid rgba(176,154,114,0.35); border-radius: 14px; color: var(--cream); }
 .enquiry__done strong { display: block; font-family: var(--font-serif); font-size: 1.6rem; font-weight: 400; color: var(--gold-light); margin-bottom: 6px; }
@@ -1985,12 +1986,9 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
     <p class="cta-section__sub reveal reveal-delay-2">
       Leave your details — we'll call you back. No pressure, no jargon.
     </p>
-    <form class="enquiry reveal reveal-delay-3" id="enquiryForm" action="https://formsubmit.co/deepak@fynnect.com" method="POST" novalidate>
-      <input type="hidden" name="_subject" value="New enquiry from fynnect.com"/>
-      <input type="hidden" name="_template" value="table"/>
-      <input type="hidden" name="_captcha" value="false"/>
-      <input type="hidden" name="_next" value="https://fynnect.com/#consult"/>
-      <div class="enquiry__honey" aria-hidden="true"><label>Leave blank <input type="text" name="_honey" tabindex="-1" autocomplete="off"/></label></div>
+    <form class="enquiry reveal reveal-delay-3" id="enquiryForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+      <input type="hidden" name="subject" value="New enquiry from fynnect.com"/>
+      <div class="enquiry__honey" aria-hidden="true"><label>Leave blank <input type="checkbox" name="botcheck" tabindex="-1"/></label></div>
       <div class="enquiry__grid">
         <div class="enquiry__field">
           <label for="enqName">Name</label>
@@ -2029,10 +2027,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
       <div class="cta-section__contact-item">
         <span>✉</span>
         <a href="mailto:deepak@fynnect.com">deepak@fynnect.com</a>
-      </div>
-      <div class="cta-section__contact-item">
-        <span>↗</span>
-        <a href="https://www.wealthy.in/partners/fynnect" target="_blank" rel="noopener">Existing client? Invest online</a>
       </div>
     </div>
   </div>
@@ -2205,17 +2199,28 @@ if (glow && window.matchMedia('(hover: hover) and (prefers-reduced-motion: no-pr
   }, { passive: true });
 }
 
-/* ─── Enquiry form (sent via FormSubmit; plain POST works without JS) ─── */
+/* ─── Enquiry form: emailed via Web3Forms; WhatsApp fallback so no enquiry is lost ─── */
+const WEB3FORMS_KEY = '';   /* paste the Web3Forms access key here */
 const enquiry = document.getElementById('enquiryForm');
 if (enquiry) {
   const statusEl = document.getElementById('enquiryStatus');
   const doneEl = document.getElementById('enquiryDone');
   const btn = enquiry.querySelector('.enquiry__submit');
   const label = btn.textContent;
+  const waLink = d => 'https://wa.me/919663156749?text=' + encodeURIComponent(
+    "Hi FYNNECT, I'd like a callback.\nName: " + d.name + '\nPhone: ' + d.phone +
+    (d.email ? '\nEmail: ' + d.email : '') + '\nLooking for: ' + d.goal);
+  const finish = (title, text, method, goal) => {
+    enquiry.hidden = true;
+    doneEl.querySelector('strong').textContent = title;
+    doneEl.querySelector('p').textContent = text;
+    doneEl.hidden = false;
+    document.dispatchEvent(new CustomEvent('fynnect:lead', { detail: { goal, method } }));
+  };
   enquiry.addEventListener('submit', async e => {
     e.preventDefault();
     statusEl.textContent = '';
-    if (enquiry.elements._honey.value) return;
+    if (enquiry.elements.botcheck.checked) return;
     const phone = enquiry.elements.phone;
     const digits = phone.value.replace(/\D/g, '').length;
     phone.setCustomValidity(phone.value && (digits < 8 || digits > 15) ? 'Please enter a valid phone number.' : '');
@@ -2223,23 +2228,33 @@ if (enquiry) {
       enquiry.reportValidity();
       return;
     }
+    const d = { name: enquiry.elements.name.value.trim(), phone: phone.value.trim(),
+                email: enquiry.elements.email.value.trim(), goal: enquiry.elements.goal.value };
+    if (!WEB3FORMS_KEY) {
+      window.open(waLink(d), '_blank', 'noopener');
+      finish('Almost done.', 'WhatsApp has opened with your details — just tap send.', 'whatsapp', d.goal);
+      return;
+    }
     btn.disabled = true;
     btn.textContent = 'Sending…';
-    const data = Object.fromEntries(new FormData(enquiry));
     try {
-      const res = await fetch('https://formsubmit.co/ajax/deepak@fynnect.com', {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(data)
+        body: JSON.stringify(Object.assign({ access_key: WEB3FORMS_KEY, subject: 'New enquiry from fynnect.com',
+                                             from_name: 'fynnect.com', botcheck: false }, d))
       });
       const out = await res.json().catch(() => ({}));
-      if (!res.ok || String(out.success) !== 'true') throw new Error(out.message || 'Send failed');
-      enquiry.hidden = true;
-      doneEl.hidden = false;
-      document.dispatchEvent(new CustomEvent('fynnect:lead', { detail: { goal: data.goal } }));
+      if (!res.ok || out.success !== true) throw new Error(out.message || 'Send failed');
+      finish('Thank you.', "We've received your details and will be in touch shortly.", 'email', d.goal);
     } catch (err) {
       console.warn('Enquiry not sent:', err.message);
-      statusEl.textContent = "Couldn't send just now — please message us on WhatsApp or email deepak@fynnect.com.";
+      statusEl.textContent = '';
+      statusEl.append("Couldn't send just now. ");
+      const a = document.createElement('a');
+      a.href = waLink(d); a.target = '_blank'; a.rel = 'noopener';
+      a.textContent = 'Send your details on WhatsApp instead →';
+      statusEl.append(a);
       btn.disabled = false;
       btn.textContent = label;
     }
