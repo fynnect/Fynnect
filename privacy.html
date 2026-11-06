@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'none'; img-src 'self' data:; object-src 'none'; base-uri 'self'"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' https://www.googletagmanager.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; object-src 'none'; base-uri 'self'"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
 <title>Privacy Policy — FYNNECT</title>
 <meta name="description" content="Privacy policy for FYNNECT — how we collect, use, and protect your information."/>
@@ -39,7 +39,7 @@ a { color:var(--gold); }
 
   <h2>Information we collect</h2>
   <ul>
-    <li><strong>Contact information</strong> you share with us — such as your name, phone number, and email — when you get in touch with us.</li>
+    <li><strong>Contact information</strong> you share with us — such as your name, phone number, and email — when you get in touch with us or submit our enquiry form.</li>
     <li><strong>Investment and risk-profile information</strong> you provide, such as goals, investment horizon, income range and existing mutual fund holdings, used to assess your risk profile and the suitability of mutual fund schemes, and retained as required under AMFI guidelines.</li>
     <li><strong>Basic usage data</strong> collected by our hosting provider (such as IP address and browser type) in standard server logs.</li>
   </ul>
@@ -49,6 +49,12 @@ a { color:var(--gold); }
     <li>To respond to your enquiries and provide mutual fund distribution and related services, including KYC and transaction processing.</li>
     <li>To schedule calls and process transactions, including through our partner platform, Wealthy (BuildWealth Technologies), whose own privacy policy applies to interactions on their platform.</li>
     <li>We do not sell or rent your personal information to third parties.</li>
+  </ul>
+
+  <h2>Service providers</h2>
+  <ul>
+    <li><strong>Enquiry form:</strong> details you submit through the form on our website are delivered to our email by FormSubmit (formsubmit.co), an email-forwarding service.</li>
+    <li><strong>Analytics:</strong> we use Google Analytics to understand how visitors use our website — pages viewed, device and browser type, approximate location, and actions such as submitting an enquiry. It uses cookies and does not tell us who you are. We honour your browser's "Do Not Track" setting, and you can also block analytics cookies in your browser or with Google's opt-out add-on.</li>
   </ul>
 
   <h2>Data protection</h2>
@@ -62,5 +68,6 @@ a { color:var(--gold); }
 
   <a href="index.html" class="back">← Back to Home</a>
 </div>
+<script src="/assets/analytics.js" defer></script>
 </body>
 </html>

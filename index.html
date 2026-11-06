@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://formsubmit.co https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
 <title>FYNNECT | Goal-Based Investing for Resident Indians &amp; NRIs</title>
 <meta name="description" content="FYNNECT helps resident Indians and NRIs invest for their goals — risk profiling, fund selection, SIPs, retirement and children's goals, portfolio reviews and tax filing support. AMFI Registered Mutual Fund Distributor (ARN-350960)."/>
@@ -189,6 +189,36 @@ body {
 /* ─── MFD tagline & disclosures ─── */
 .footer__mfd-tag { font-size: 12px; letter-spacing: 0.06em; color: var(--gold-light); margin: 4px 0 14px; }
 .footer__disclaimer a { color: var(--gold-light); }
+
+/* ─── Enquiry form ─── */
+.enquiry { max-width: 560px; margin: 0 auto; text-align: left; }
+.enquiry__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.enquiry__field { display: flex; flex-direction: column; gap: 6px; }
+.enquiry__field--full { grid-column: 1 / -1; }
+.enquiry__field label { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(246,243,238,0.55); }
+.enquiry__field label span { text-transform: none; letter-spacing: 0; color: rgba(246,243,238,0.35); }
+.enquiry input, .enquiry select {
+  width: 100%; font-family: var(--font-sans); font-size: 0.95rem; font-weight: 300; color: var(--cream);
+  background: rgba(246,243,238,0.04); border: 1px solid rgba(246,243,238,0.16); border-radius: 10px;
+  padding: 13px 14px; transition: border-color var(--dur-base) var(--ease), background var(--dur-base) var(--ease);
+}
+.enquiry select { appearance: none; -webkit-appearance: none; cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, var(--gold) 50%), linear-gradient(135deg, var(--gold) 50%, transparent 50%);
+  background-position: calc(100% - 18px) 52%, calc(100% - 13px) 52%; background-size: 5px 5px; background-repeat: no-repeat; }
+.enquiry select option { color: var(--ink); }
+.enquiry input::placeholder { color: rgba(246,243,238,0.3); }
+.enquiry input:focus, .enquiry select:focus { outline: none; border-color: var(--gold); background: rgba(246,243,238,0.07); }
+.enquiry input:user-invalid { border-color: #C98F7A; }
+.enquiry__honey { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.enquiry__submit { width: 100%; justify-content: center; margin-top: 22px; padding: 15px 26px; }
+.enquiry__submit:disabled { opacity: 0.6; cursor: wait; transform: none; }
+.enquiry__note { font-size: 0.75rem; color: rgba(246,243,238,0.4); text-align: center; margin-top: 14px; }
+.enquiry__note a { color: rgba(246,243,238,0.6); }
+.enquiry__status { min-height: 1.4em; font-size: 0.85rem; color: #E0B3A2; text-align: center; margin-top: 10px; }
+.enquiry__done { max-width: 560px; margin: 0 auto; padding: 28px; border: 1px solid rgba(176,154,114,0.35); border-radius: 14px; color: var(--cream); }
+.enquiry__done strong { display: block; font-family: var(--font-serif); font-size: 1.6rem; font-weight: 400; color: var(--gold-light); margin-bottom: 6px; }
+.enquiry__done p { color: rgba(246,243,238,0.6); font-size: 0.92rem; }
+@media (max-width: 560px) { .enquiry__grid { grid-template-columns: 1fr; } .enquiry input, .enquiry select { font-size: 16px; } }
 
 /* ─── Accessibility ─── */
 .skip-link {
@@ -1591,7 +1621,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
         <li><a href="#insights">Insights</a></li>
         <li><a href="invest-by-age.html">Invest by Age</a></li>
       </ul>
-      <a href="https://www.wealthy.in/partners/fynnect" target="_blank" rel="noopener" class="btn btn--dark">Get Started</a>
+      <a href="#consult" class="btn btn--dark">Get Started</a>
       <div class="nav__hamburger" id="hamburger" role="button" aria-label="Open menu" aria-expanded="false" tabindex="0">
         <span></span><span></span><span></span>
       </div>
@@ -1607,8 +1637,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
   <a href="#insights" onclick="closeMenu()">Insights</a>
   <a href="invest-by-age.html" onclick="closeMenu()">Invest by Age</a>
   <div class="nav__mobile-cta">
-    <a href="https://www.wealthy.in/partners/fynnect" target="_blank" rel="noopener" class="cta-primary" onclick="closeMenu()">Get Started</a>
-    <a href="#consult" class="cta-secondary" onclick="closeMenu()">Learn More</a>
+    <a href="#consult" class="cta-primary" onclick="closeMenu()">Get Started</a>
+    <a href="#services" class="cta-secondary" onclick="closeMenu()">Our Services</a>
   </div>
   <div class="nav__mobile-contact">
     <a href="mailto:deepak@fynnect.com">deepak@fynnect.com</a>
@@ -1630,7 +1660,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
       Investing around what matters — your goals, your milestones, your peace of mind.
     </p>
     <div class="hero__ctas">
-      <a href="https://www.wealthy.in/partners/fynnect" target="_blank" rel="noopener" class="btn btn--gold">Get Started</a>
+      <a href="#consult" class="btn btn--gold">Get Started</a>
       <a href="#services" class="btn btn--ghost-inv">Explore Services</a>
     </div>
   </div>
@@ -1664,7 +1694,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
           So we built FYNNECT around clarity and trust. We recommend investments only after understanding your goals and risk profile, we explain every recommendation in plain language, and we are upfront about how we are paid. No pressure. No unnecessary complexity. Just helping you invest towards the future you actually want to build.
         </p>
         <div class="reveal reveal-delay-4" style="margin-top:8px;">
-          <a href="https://www.wealthy.in/partners/fynnect" target="_blank" rel="noopener" class="btn btn--outline">Start a Conversation</a>
+          <a href="#consult" class="btn btn--outline">Start a Conversation</a>
         </div>
       </div>
 
@@ -1953,15 +1983,56 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
       you <em>actually want.</em>
     </h2>
     <p class="cta-section__sub reveal reveal-delay-2">
-      One honest conversation. No pressure, no jargon.
+      Leave your details — we'll call you back. No pressure, no jargon.
     </p>
-    <div class="cta-section__btns reveal reveal-delay-3">
-      <a href="https://www.wealthy.in/partners/fynnect" target="_blank" rel="noopener" class="btn btn--gold">Get Started</a>
+    <form class="enquiry reveal reveal-delay-3" id="enquiryForm" action="https://formsubmit.co/deepak@fynnect.com" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="New enquiry from fynnect.com"/>
+      <input type="hidden" name="_template" value="table"/>
+      <input type="hidden" name="_captcha" value="false"/>
+      <input type="hidden" name="_next" value="https://fynnect.com/#consult"/>
+      <div class="enquiry__honey" aria-hidden="true"><label>Leave blank <input type="text" name="_honey" tabindex="-1" autocomplete="off"/></label></div>
+      <div class="enquiry__grid">
+        <div class="enquiry__field">
+          <label for="enqName">Name</label>
+          <input id="enqName" name="name" type="text" autocomplete="name" required maxlength="80"/>
+        </div>
+        <div class="enquiry__field">
+          <label for="enqPhone">Phone / WhatsApp</label>
+          <input id="enqPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required pattern="[0-9+\s\-\(\)]{8,20}" placeholder="+91"/>
+        </div>
+        <div class="enquiry__field">
+          <label for="enqEmail">Email <span>(optional)</span></label>
+          <input id="enqEmail" name="email" type="email" autocomplete="email" maxlength="120"/>
+        </div>
+        <div class="enquiry__field">
+          <label for="enqGoal">Looking for</label>
+          <select id="enqGoal" name="goal">
+            <option value="Investing for a goal">Investing for a goal</option>
+            <option value="Retirement">Retirement</option>
+            <option value="Children's education">Children's education</option>
+            <option value="NRI investing">NRI investing</option>
+            <option value="Portfolio review / consolidation">Portfolio review / consolidation</option>
+            <option value="Tax filing">Tax filing</option>
+            <option value="Something else">Something else</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn btn--gold enquiry__submit">Request a Callback</button>
+      <p class="enquiry__status" id="enquiryStatus" role="alert"></p>
+      <p class="enquiry__note">We'll only use your details to respond to you. <a href="privacy.html">Privacy Policy</a></p>
+    </form>
+    <div class="enquiry__done" id="enquiryDone" role="status" hidden>
+      <strong>Thank you.</strong>
+      <p>We've received your details and will be in touch shortly.</p>
     </div>
     <div class="cta-section__contact reveal reveal-delay-4">
       <div class="cta-section__contact-item">
         <span>✉</span>
         <a href="mailto:deepak@fynnect.com">deepak@fynnect.com</a>
+      </div>
+      <div class="cta-section__contact-item">
+        <span>↗</span>
+        <a href="https://www.wealthy.in/partners/fynnect" target="_blank" rel="noopener">Existing client? Invest online</a>
       </div>
     </div>
   </div>
@@ -2010,7 +2081,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
         <p class="footer__col-title">Contact</p>
         <ul class="footer__col-links">
           <li><a href="mailto:deepak@fynnect.com">deepak@fynnect.com</a></li>
-          <li><a href="https://www.wealthy.in/partners/fynnect" target="_blank" rel="noopener">Get Started</a></li>
+          <li><a href="#consult">Get Started</a></li>
+          <li><a href="https://www.wealthy.in/partners/fynnect" target="_blank" rel="noopener">Invest Online</a></li>
           <li><a href="disclosures.html">Regulatory Disclosures</a></li>
           <li><a href="privacy.html">Privacy Policy</a></li>
           <li><a href="terms.html">Terms of Use</a></li>
@@ -2033,6 +2105,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.82-1.31-1.26-2.83-1.26-4.38 0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24s-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
 </a>
 
+<script src="/assets/analytics.js" defer></script>
 <script>
 /* ─── Nav scroll effect ─── */
 const nav = document.getElementById('nav');
@@ -2130,6 +2203,46 @@ if (glow && window.matchMedia('(hover: hover) and (prefers-reduced-motion: no-pr
       });
     }
   }, { passive: true });
+}
+
+/* ─── Enquiry form (sent via FormSubmit; plain POST works without JS) ─── */
+const enquiry = document.getElementById('enquiryForm');
+if (enquiry) {
+  const statusEl = document.getElementById('enquiryStatus');
+  const doneEl = document.getElementById('enquiryDone');
+  const btn = enquiry.querySelector('.enquiry__submit');
+  const label = btn.textContent;
+  enquiry.addEventListener('submit', async e => {
+    e.preventDefault();
+    statusEl.textContent = '';
+    if (enquiry.elements._honey.value) return;
+    const phone = enquiry.elements.phone;
+    const digits = phone.value.replace(/\D/g, '').length;
+    phone.setCustomValidity(phone.value && (digits < 8 || digits > 15) ? 'Please enter a valid phone number.' : '');
+    if (!enquiry.checkValidity()) {
+      enquiry.reportValidity();
+      return;
+    }
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    const data = Object.fromEntries(new FormData(enquiry));
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/deepak@fynnect.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok || String(out.success) !== 'true') throw new Error(out.message || 'Send failed');
+      enquiry.hidden = true;
+      doneEl.hidden = false;
+      document.dispatchEvent(new CustomEvent('fynnect:lead', { detail: { goal: data.goal } }));
+    } catch (err) {
+      statusEl.textContent = "Couldn't send just now — please message us on WhatsApp or email deepak@fynnect.com.";
+      btn.disabled = false;
+      btn.textContent = label;
+    }
+  });
 }
 </script>
 </body>

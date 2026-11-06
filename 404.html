@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'none'; img-src 'self' data:; object-src 'none'; base-uri 'self'"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' https://www.googletagmanager.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; object-src 'none'; base-uri 'self'"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
 <title>Page Not Found — FYNNECT</title>
 <meta name="robots" content="noindex"/>
@@ -39,5 +39,6 @@ p { color:rgba(246,243,238,0.65); max-width:420px; margin:0 auto 32px; line-heig
   <p>The page you're looking for doesn't exist or has moved. Let's get you back to what matters.</p>
   <a href="/" class="btn">Back to Home</a>
 </div>
+<script src="/assets/analytics.js" defer></script>
 </body>
 </html>
